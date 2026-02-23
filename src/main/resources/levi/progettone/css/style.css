@@ -3,8 +3,9 @@
 }
 
 #menuScreen{
-    -fx-background-color: #ab6bd6;
+    -fx-background-color: black;
 }
+
 .button {
     -fx-text-fill: black;
     -fx-background-radius: 20;
@@ -13,7 +14,7 @@
     -fx-border-width: 2;
     -fx-cursor: hand;
     -fx-font-weight: bold;
-    -fx-font-size: 30;
+    -fx-font-size: 50;
 }
 
 .button:hover {
@@ -28,8 +29,12 @@
 
 .label {
     -fx-font-weight: bold;
-    -fx-font-size: 13;
+    -fx-font-size: 20;
     -fx-text-fill: white;
+}
+
+.spazio {
+    -fx-font-size: 130;
 }
 
 #back {

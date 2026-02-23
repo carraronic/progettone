@@ -4,15 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f50c67f2-78fc-4e20-b64f-d5ba6f53cdd0" name="Changes" comment="first commit">
-      <change afterPath="$PROJECT_DIR$/src/main/java/levi/progettone/controller/GameController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/levi/progettone/controller/MenuController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/levi/progettone/imgs/bg.jpg" afterDir="false" />
+    <list default="true" id="f50c67f2-78fc-4e20-b64f-d5ba6f53cdd0" name="Changes" comment="impostato background, creato il secondo controller">
+      <change afterPath="$PROJECT_DIR$/src/main/resources/levi/progettone/imgs/banner.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/levi/progettone/imgs/sleep-car.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/levi/progettone/controller/MainController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/levi/progettone/MainApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/levi/progettone/MainApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/levi/progettone/controller/MenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/levi/progettone/controller/MenuController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/levi/progettone/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/levi/progettone/css/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/levi/progettone/views/game.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/levi/progettone/views/game.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/levi/progettone/views/menu.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/levi/progettone/views/menu.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -37,12 +35,12 @@
     &quot;assignee&quot;: &quot;carraronic&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/carraronic/progettone.git",
-    "accountId": "be1f6f32-dfa4-4bc2-b1e3-6cc03f713b7d"
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/carraronic/progettone.git&quot;,
+    &quot;accountId&quot;: &quot;be1f6f32-dfa4-4bc2-b1e3-6cc03f713b7d&quot;
   }
-}]]></component>
+}</component>
   <component name="MavenImportPreferences">
     <option name="generalSettings">
       <MavenGeneralSettings>
@@ -58,18 +56,18 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.MainApplication.executor": "Run",
-    "Application.main.executor": "Run",
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "master",
-    "kotlin-language-version-configured": "true",
-    "settings.editor.selected.configurable": "preferences.lookFeel"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.MainApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Application.main.executor&quot;: &quot;Run&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\carra\Desktop\Code\JAVA\progett1\src\main\resources\levi\progettone\imgs" />
@@ -101,11 +99,20 @@
       <option name="project" value="LOCAL" />
       <updated>1771842972553</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="impostato background, creato il secondo controller">
+      <option name="closed" value="true" />
+      <created>1771850992714</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1771850992714</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="first commit" />
-    <option name="LAST_COMMIT_MESSAGE" value="first commit" />
+    <MESSAGE value="impostato background, creato il secondo controller" />
+    <option name="LAST_COMMIT_MESSAGE" value="impostato background, creato il secondo controller" />
   </component>
 </project>
