@@ -3,21 +3,18 @@ package levi.progettone.controller;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.control.ProgressIndicator;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.event.ActionEvent;
-import levi.progettone.MainApplication;
-
-import javax.swing.*;
-import java.io.IOException;
 
 public class MainController {
 
+    //MENU
     @FXML
     private Button start;
     @FXML
@@ -27,12 +24,15 @@ public class MainController {
     @FXML
     private Label errors;
 
+    //CARICAMENTO
+    @FXML
+    public AnchorPane caricamento;
     @FXML
     private ProgressBar loading;
     @FXML
     private ProgressIndicator circleLoad;
 
-    private boolean menuInterface = true;
+    double percentuale = 0d;
 
     public void initialize(){
         System.out.println("ciao");
@@ -41,13 +41,14 @@ public class MainController {
     @FXML
     public void goDelete(ActionEvent event) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/levi/progettone/views/menu.fxml"));
-            Parent menu = loader.load();
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/levi/progettone/views/game.fxml"));
 
-            Scene scene = new Scene(menu);
-
+            Scene scene = new Scene(loader.load(),320, 240);
             Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+
+            window.setTitle("game");
             window.setScene(scene);
+            window.setFullScreen(true);
             window.show();
 
         } catch (Exception e) {

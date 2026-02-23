@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane fx:id="game" mouseTransparent="true" stylesheets="@../css/style.css" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="levi.progettone.controller.MainController">
+   <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" style="-fx-alignment: center;">
+      <children>
+         <Label alignment="CENTER" contentDisplay="CENTER" text="GAME" textAlignment="CENTER" />
+      </children>
+   </VBox>
+   <cursor>
+      <Cursor fx:constant="NONE" />
+   </cursor>
+</AnchorPane>
