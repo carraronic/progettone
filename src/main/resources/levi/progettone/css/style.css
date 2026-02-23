@@ -2,7 +2,7 @@
     -fx-font-family: "Segoe UI", Helvetica, Arial, sans-serif;
 }
 
-#menuScreen{
+#gameScreen, #menuScreen{
     -fx-background-color: black;
 }
 
@@ -49,6 +49,6 @@
 
 .vbox-background {
     -fx-background-repeat: no-repeat;
-    -fx-background-size: cover; /* Resizes image to fill the VBox */
+    -fx-background-size: cover;
     -fx-background-position: center center;
 }

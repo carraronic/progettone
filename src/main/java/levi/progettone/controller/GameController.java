@@ -21,7 +21,7 @@ public class GameController {
     private Canvas canva;
 
     public void initialize(){
-        impostaSfondo();
+        //impostaSfondo();
     }
 
     @FXML
@@ -42,12 +42,12 @@ public class GameController {
         }
     }
 
-    @FXML
-    public void impostaSfondo() {
-        Image img = new Image(getClass().getResource("/levi/progettone/imgs/bg.jpg").toExternalForm());
-        BackgroundSize size = new BackgroundSize(BackgroundSize.AUTO, BackgroundSize.AUTO, false, false, false, true);
-        BackgroundImage bgImage = new BackgroundImage(img, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, size);
-
-        gameScreen.setBackground(new Background(bgImage));
-    }
+//    @FXML
+//    public void impostaSfondo() {
+//        Image img = new Image(getClass().getResource("/levi/progettone/imgs/bg.jpg").toExternalForm());
+//        BackgroundSize size = new BackgroundSize(BackgroundSize.AUTO, BackgroundSize.AUTO, false, false, false, true);
+//        BackgroundImage bgImage = new BackgroundImage(img, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, size);
+//
+//        gameScreen.setBackground(new Background(bgImage));
+//    }
 }
