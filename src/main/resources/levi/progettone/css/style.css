@@ -1,8 +1,10 @@
 .root {
-    -fx-background-color: #ab6bd6;
     -fx-font-family: "Segoe UI", Helvetica, Arial, sans-serif;
 }
 
+#menuScreen{
+    -fx-background-color: #ab6bd6;
+}
 .button {
     -fx-text-fill: black;
     -fx-background-radius: 20;
@@ -28,4 +30,20 @@
     -fx-font-weight: bold;
     -fx-font-size: 13;
     -fx-text-fill: white;
+}
+
+#back {
+    -fx-background-radius: 10;
+    -fx-border-radius: 10;
+    -fx-border-color: rgba(255, 255, 255, 0.1);
+    -fx-border-width: 2;
+    -fx-cursor: hand;
+    -fx-font-weight: bold;
+    -fx-font-size: 15;
+}
+
+.vbox-background {
+    -fx-background-repeat: no-repeat;
+    -fx-background-size: cover; /* Resizes image to fill the VBox */
+    -fx-background-position: center center;
 }
