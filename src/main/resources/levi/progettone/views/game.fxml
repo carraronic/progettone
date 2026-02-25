@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.*?>
-<?import javafx.scene.canvas.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<VBox fx:id="gameScreen" alignment="CENTER" spacing="20.0" stylesheets="@../css/style.css" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="levi.progettone.controller.GameController">
+<VBox fx:id="gameScreen" alignment="CENTER" onKeyPressed="#input" spacing="20.0" stylesheets="@../css/style.css" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="levi.progettone.controller.GameController">
     <padding>
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
     </padding>
-   <Canvas height="200.0" width="200.0" />
+   <Pane fx:id="level" prefHeight="1500.0" prefWidth="2000.0" style="-fx-background-color: white;" />
    <Button fx:id="back" mnemonicParsing="false" onAction="#goBack" text="Go Back" />
 </VBox>

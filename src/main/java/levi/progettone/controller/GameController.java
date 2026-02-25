@@ -5,11 +5,14 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Scene;
-import javafx.scene.canvas.Canvas;
 import javafx.scene.control.Button;
-import javafx.scene.image.Image;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.*;
+import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
+import levi.progettone.model.Player;
+import javafx.scene.paint.Color;
 
 public class GameController {
 
@@ -18,10 +21,13 @@ public class GameController {
     @FXML
     private VBox gameScreen;
     @FXML
-    private Canvas canva;
+    private Pane level;
+
+    Player p = new Player(50, 50);
 
     public void initialize(){
-        //impostaSfondo();
+        level.getChildren().clear();
+        start();
     }
 
     @FXML
@@ -42,12 +48,46 @@ public class GameController {
         }
     }
 
-//    @FXML
-//    public void impostaSfondo() {
-//        Image img = new Image(getClass().getResource("/levi/progettone/imgs/bg.jpg").toExternalForm());
-//        BackgroundSize size = new BackgroundSize(BackgroundSize.AUTO, BackgroundSize.AUTO, false, false, false, true);
-//        BackgroundImage bgImage = new BackgroundImage(img, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, size);
-//
-//        gameScreen.setBackground(new Background(bgImage));
-//    }
+    public void input(KeyEvent event){
+        KeyCode c = event.getCode();
+
+        switch(c){
+            case W, UP:
+                p.move(1);
+                break;
+            case S, DOWN:
+                p.move(2);
+                break;
+            case A, LEFT:
+                p.move(3);
+                break;
+            case D, RIGHT:
+                p.move(4);
+                break;
+            default:
+                break;
+        }
+    }
+
+    @FXML
+    public void start(){
+
+        Rectangle player = new Rectangle(30, 60); // w -> h
+        player.setX(60); // da sinistra
+        player.setY(930); // dall'alto
+        player.setFill(Color.PURPLE);
+
+        Rectangle obstacle = new Rectangle(200, 0, 200, 200); // sinistra -> alto | w -> h
+        obstacle.setFill(Color.BLACK);
+
+        level.getChildren().addAll(player, obstacle);
+
+
+        if (player.getBoundsInParent().intersects(obstacle.getBoundsInParent())) {
+            p.setMovement(false);
+            System.out.println("Collisione rilevata!");
+        }else{
+            p.setMovement(true);
+        }
+    }
 }
