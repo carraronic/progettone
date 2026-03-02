@@ -1,18 +1,16 @@
 package levi.progettone.model;
 
 public class Player {
-    private int speed;
-    private int gravity;
-    private int x;
-    private int y;
+    private final double value;
+    private double x;
+    private double y;
     private boolean movement;
 
-    public Player(int x, int y) {
+    public Player(double x, double y) {
         movement = true;
         this.x = x;
         this.y = y;
-        speed = 50;
-        gravity = 50;
+        value = 100;
     }
 
     public void setMovement(boolean movement) {
@@ -36,16 +34,16 @@ public class Player {
         // 1: su | 2: giu | 3: sinistra | 4: destra
         switch(direction){
             case 1:
-                y += gravity;
+                y -= value;
                 break;
             case 2:
-                y -= gravity;
+                y += value;
                 break;
             case 3:
-                x += speed;
+                x -= value;
                 break;
             case 4:
-                x -= speed;
+                x += value;
                 break;
             default:
                 break;
