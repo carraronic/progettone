@@ -8,6 +8,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.*;
@@ -16,6 +18,9 @@ import javafx.stage.Stage;
 import javafx.util.Duration;
 import levi.progettone.model.Player;
 import javafx.scene.paint.Color;
+import org.w3c.dom.ls.LSOutput;
+
+import java.util.ArrayList;
 
 public class GameController {
 
@@ -31,9 +36,14 @@ public class GameController {
     double baseX = (v/2);
     double baseY = (v/2);
 
+    int pos;
+    boolean controllo = true;
+
+    ArrayList<Rectangle> obsList = new ArrayList<>();
+
     Player p = new Player(baseX, baseY);
     Rectangle player = new Rectangle(v, v); // w -> h
-    Rectangle obstacle = new Rectangle(v*2, 0, v*2, v*2); // sinistra -> alto | w -> h
+    Rectangle obstacle = new Rectangle(v*pos, 0, v*2, v*2); // sinistra -> alto | w -> h
     Rectangle invisible = new Rectangle(v, v);
 
     public void initialize(){
@@ -41,6 +51,7 @@ public class GameController {
         level.setPrefHeight(1500);
         level.getChildren().clear();
         start();
+        System.out.println(pos);
         //test();
     }
 
@@ -66,48 +77,62 @@ public class GameController {
         KeyCode c = event.getCode();
 
         switch(c){
-            case W, KP_UP:
+            case W, UP:
                 p.move(1);
                 break;
-            case S, KP_DOWN:
+            case S, DOWN:
                 p.move(2);
                 break;
-            case A, KP_LEFT:
+            case A, LEFT:
                 p.move(3);
                 break;
-            case D, KP_RIGHT:
+            case D, RIGHT:
                 p.move(4);
                 break;
             default:
                 break;
         }
 
-        invisible.setY(p.getY());
-        invisible.setX(p.getX());
+        invisible.setY(p.getY() - v/2);
+        invisible.setX(p.getX() - v/2);
         if(!collisionCheck(invisible)){
             movement(player);
-            System.out.println("test");
         }
 
     }
 
     @FXML
     public void start(){
-        player.setX(0); // da sinistra
-        player.setY(0); // dall'alto
+        player.setWidth(v);
+        player.setHeight(v);
+        player.setX(0);
+        player.setY(0);
         player.setFill(Color.PURPLE);
 
-        invisible.setX(player.getX());
-        invisible.setY(player.getY());
+        invisible.setWidth(v);
+        invisible.setHeight(v);
+        invisible.setX(0);
+        invisible.setY(0);
         invisible.setFill(Color.TRANSPARENT);
 
-        obstacle.setFill(Color.BLACK);
+        for (int i = 0; i < 7; i++) {
+            pos = (int) (Math.random() * 10);
+            Rectangle obstacle = new Rectangle(v*pos, (pos>5? 0 : 800), v*2, v*2);
+            obstacle.setFill(Color.BLACK);
+            obsList.add(obstacle);
+            level.getChildren().add(obstacle);
+        }
 
-        level.getChildren().addAll(player, obstacle);
+        level.getChildren().add(player);
     }
 
     public boolean collisionCheck(Rectangle r){
-        return r.getBoundsInParent().intersects(obstacle.getBoundsInParent());
+        for(Rectangle obstacle : obsList){
+            if(r.getBoundsInParent().intersects(obstacle.getBoundsInParent())){
+                return true;
+            }
+        }
+        return false;
     }
 
     public void movement(Rectangle r){
@@ -128,4 +153,5 @@ public class GameController {
 //        r.setY(p.getY());
 //        r.setX(p.getX());
     }
+
 }

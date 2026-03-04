@@ -8,6 +8,6 @@
     <padding>
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
     </padding>
-   <Pane fx:id="level" prefHeight="1500.0" prefWidth="2000.0" style="-fx-background-color: white;" />
+   <Pane fx:id="level" focusTraversable="true" prefHeight="1500.0" prefWidth="2000.0" style="-fx-background-color: white;" />
    <Button fx:id="back" mnemonicParsing="false" onAction="#goBack" text="Go Back" />
 </VBox>

@@ -4,17 +4,19 @@ public class Player {
     private final double value;
     private double x;
     private double y;
-    private boolean movement;
 
     public Player(double x, double y) {
-        movement = true;
         this.x = x;
         this.y = y;
         value = 100;
     }
 
-    public void setMovement(boolean movement) {
-        this.movement = movement;
+    public void setX(double x) {
+        this.x = x;
+    }
+
+    public void setY(double y) {
+        this.y = y;
     }
 
     public double getX() {
@@ -25,11 +27,11 @@ public class Player {
         return y;
     }
 
-    public void move(int direction){
+    public double getValue() {
+        return value;
+    }
 
-        if(!movement){
-            return;
-        }
+    public void move(int direction){
 
         // 1: su | 2: giu | 3: sinistra | 4: destra
         switch(direction){
