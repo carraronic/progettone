@@ -10,17 +10,22 @@
   <padding>
     <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
   </padding>
-   <ImageView fx:id="gameImage" fitHeight="200.0" fitWidth="736.0" pickOnBounds="true" preserveRatio="true" />
+   <Label layoutX="122.0" layoutY="100.0" styleClass="spazio">
+      <font>
+         <Font size="29.0" />
+      </font>
+   </Label>
+   <ImageView fx:id="gameImage" fitHeight="75.0" fitWidth="276.0" pickOnBounds="true" preserveRatio="true" />
    <Label layoutX="398.0" layoutY="488.0" styleClass="spazio">
       <font>
          <Font size="29.0" />
       </font>
    </Label>
-  <Button fx:id="start" onAction="#goStart" text="START" textAlignment="CENTER" />
-   <Button fx:id="exit" mnemonicParsing="false" onAction="#esci" text="QUIT" />
-   <Label styleClass="spazio">
+  <Button fx:id="start" onAction="#goStart" prefHeight="50.0" prefWidth="150.0" text="START" textAlignment="CENTER" />
+   <Button fx:id="exit" mnemonicParsing="false" onAction="#esci" prefHeight="50.0" prefWidth="150.0" text="QUIT" />
+   <Label>
       <font>
-         <Font size="29.0" />
+         <Font size="50.0" />
       </font>
    </Label>
    <Label fx:id="author" />

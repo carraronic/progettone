@@ -15,6 +15,7 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.*;
 import javafx.scene.shape.*;
+import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import levi.progettone.model.Player;
@@ -33,16 +34,22 @@ public class GameController {
     @FXML
     private Pane level;
     @FXML
-    private Label coinCount;
+    private ImageView p1;
+    @FXML
+    private ImageView p2;
+    @FXML
+    private ImageView p3;
 
     double v = 100;
 
     double baseX = (v/2);
     double baseY = (v/2);
 
+    int punti;
+    Font font = Font.loadFont(getClass().getResourceAsStream("/levi/progettone/font/flappy-font.ttf"), 13);
+
     int pos;
     boolean controllo = true;
-    int monete;
 
     ArrayList<Rectangle> obsList = new ArrayList<>();
     ArrayList<Rectangle> coinList = new ArrayList<>();
@@ -55,13 +62,9 @@ public class GameController {
 
 
     public void initialize(){
-        level.setPrefWidth(2000);
-        level.setPrefHeight(1500);
-        level.getChildren().clear();
-        coinCount.setText("Monete: " + monete);
-        start();
-        System.out.println(pos);
-        //test();
+        punti = 0;
+        aggiornaPunti();
+        init();
     }
 
     @FXML
@@ -69,12 +72,12 @@ public class GameController {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/levi/progettone/views/menu.fxml"));
 
-            Scene scene = new Scene(loader.load(),320, 240);
+            Scene scene = new Scene(loader.load(),432, 768);
             Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
 
             window.setTitle("menu");
             window.setScene(scene);
-            window.setFullScreen(true);
+//            window.setFullScreen(true);
             window.show();
 
         } catch (Exception e) {
@@ -108,6 +111,9 @@ public class GameController {
             movement(player);
             collisionCheck(player);
         }
+
+        punti++;
+        aggiornaPunti();
 
     }
 
@@ -148,9 +154,7 @@ public class GameController {
         for(Node n : level.getChildren()){
             if(r.getBoundsInParent().intersects(n.getBoundsInParent())){
                 if(coinList.contains(n)){
-                    monete++;
                     n = new Rectangle(pos>5? 200 : 470, 400, v/2, v/2);
-                    coinCount.setText("Monete: " + monete);
                     return true;
                 }
                 if(obsList.contains(n)){
@@ -179,5 +183,30 @@ public class GameController {
 //        r.setY(p.getY());
 //        r.setX(p.getX());
     }
+
+    public void init(){
+        Image image = new Image(getClass().getResource("/levi/progettone/imgs/assets/others/background-day.png").toExternalForm());
+        BackgroundSize size = new BackgroundSize(100, 100, true, true, true, false);
+        BackgroundImage bImage = new BackgroundImage(image, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, size);
+        gameScreen.setBackground(new Background(bImage));
+        back.setStyle("-fx-font-family: '" + font.getFamily() + "'; -fx-font-size: 13;");
+    }
+
+    public void aggiornaPunti(){
+        if(punti < 10){
+            p1.setImage(new Image(getClass().getResource("/levi/progettone/imgs/assets/numbers/" + punti + ".png").toExternalForm()));
+            p2.setImage(new Image(getClass().getResource("/levi/progettone/imgs/assets/numbers/0.png").toExternalForm()));
+            p3.setImage(new Image(getClass().getResource("/levi/progettone/imgs/assets/numbers/0.png").toExternalForm()));
+        }else if (punti < 100){
+            p1.setImage(new Image(getClass().getResource("/levi/progettone/imgs/assets/numbers/" + (punti % 10) + ".png").toExternalForm()));
+            p2.setImage(new Image(getClass().getResource("/levi/progettone/imgs/assets/numbers/" + punti/10 + ".png").toExternalForm()));
+            p3.setImage(new Image(getClass().getResource("/levi/progettone/imgs/assets/numbers/0.png").toExternalForm()));
+        }else{
+            p1.setImage(new Image(getClass().getResource("/levi/progettone/imgs/assets/numbers/" + (punti % 10) + ".png").toExternalForm()));
+            p2.setImage(new Image(getClass().getResource("/levi/progettone/imgs/assets/numbers/" + ((punti/10) % 10) + ".png").toExternalForm()));
+            p3.setImage(new Image(getClass().getResource("/levi/progettone/imgs/assets/numbers/" + (punti/100) + ".png").toExternalForm()));
+        }
+    }
+
 
 }

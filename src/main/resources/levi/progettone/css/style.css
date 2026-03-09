@@ -1,29 +1,16 @@
-.root {
-    -fx-font-family: "Segoe UI", Helvetica, Arial, sans-serif;
-}
-.vbox-sfondo {
-    -fx-background-image: url("levi/progettone/imgs/assets/others/background-day.png");
-    -fx-background-repeat: no-repeat;
-    -fx-background-size: cover;
-    -fx-background-position: center;
-}
-
-
-
 .button {
     -fx-text-fill: black;
-    -fx-background-radius: 20;
-    -fx-border-radius: 20;
+    -fx-background-radius: 10;
+    -fx-border-radius: 10;
     -fx-border-color: rgba(255, 255, 255, 0.1);
     -fx-border-width: 2;
     -fx-cursor: hand;
-    -fx-font-weight: bold;
-    -fx-font-size: 50;
+    -fx-font-size: 25;
 }
 
 .button:hover {
-    -fx-background-radius: 20;
-    -fx-border-radius: 20;
+    -fx-background-radius: 10;
+    -fx-border-radius: 10;
 }
 
 #game {
@@ -32,13 +19,16 @@
 }
 
 .label {
-    -fx-font-weight: bold;
     -fx-font-size: 20;
-    -fx-text-fill: white;
+    -fx-text-fill: black;
 }
 
 .spazio {
-    -fx-font-size: 130;
+    -fx-font-size: 50;
+}
+
+#author {
+    -fx-font-size: 13;
 }
 
 #back {
