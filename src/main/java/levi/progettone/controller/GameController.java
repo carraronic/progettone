@@ -8,6 +8,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
@@ -18,6 +19,7 @@ import javafx.stage.Stage;
 import javafx.util.Duration;
 import levi.progettone.model.Player;
 import javafx.scene.paint.Color;
+import org.w3c.dom.css.Rect;
 import org.w3c.dom.ls.LSOutput;
 
 import java.util.ArrayList;
@@ -30,6 +32,8 @@ public class GameController {
     private VBox gameScreen;
     @FXML
     private Pane level;
+    @FXML
+    private Label coinCount;
 
     double v = 100;
 
@@ -38,18 +42,23 @@ public class GameController {
 
     int pos;
     boolean controllo = true;
+    int monete;
 
     ArrayList<Rectangle> obsList = new ArrayList<>();
+    ArrayList<Rectangle> coinList = new ArrayList<>();
 
     Player p = new Player(baseX, baseY);
     Rectangle player = new Rectangle(v, v); // w -> h
     Rectangle obstacle = new Rectangle(v*pos, 0, v*2, v*2); // sinistra -> alto | w -> h
     Rectangle invisible = new Rectangle(v, v);
 
+
+
     public void initialize(){
         level.setPrefWidth(2000);
         level.setPrefHeight(1500);
         level.getChildren().clear();
+        coinCount.setText("Monete: " + monete);
         start();
         System.out.println(pos);
         //test();
@@ -97,6 +106,7 @@ public class GameController {
         invisible.setX(p.getX() - v/2);
         if(!collisionCheck(invisible)){
             movement(player);
+            collisionCheck(player);
         }
 
     }
@@ -123,13 +133,29 @@ public class GameController {
             level.getChildren().add(obstacle);
         }
 
-        level.getChildren().add(player);
+        pos = 0;
+        for (int i = 0; i < 10; i++) {
+            Rectangle coin = new Rectangle(pos>5? 330 : 500, 400, v/2, v/2);
+            coin.setFill(Color.YELLOW);
+            coinList.add(coin);
+            level.getChildren().add(coin);
+        }
+
+        level.getChildren().addAll(player);
     }
 
     public boolean collisionCheck(Rectangle r){
-        for(Rectangle obstacle : obsList){
-            if(r.getBoundsInParent().intersects(obstacle.getBoundsInParent())){
-                return true;
+        for(Node n : level.getChildren()){
+            if(r.getBoundsInParent().intersects(n.getBoundsInParent())){
+                if(coinList.contains(n)){
+                    monete++;
+                    n = new Rectangle(pos>5? 200 : 470, 400, v/2, v/2);
+                    coinCount.setText("Monete: " + monete);
+                    return true;
+                }
+                if(obsList.contains(n)){
+                    return true;
+                }
             }
         }
         return false;

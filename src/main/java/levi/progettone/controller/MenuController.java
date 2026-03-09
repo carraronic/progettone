@@ -56,6 +56,11 @@ public class MenuController {
 
     @FXML
     private void impostaBanner(){
-        gameImage.setImage(new Image(getClass().getResource("/levi/progettone/imgs/banner.png").toExternalForm()));
+        gameImage.setImage(new Image(getClass().getResource("/levi/progettone/imgs/assets/others/message.png").toExternalForm()));
+        Image image = new Image(getClass().getResource("/levi/progettone/imgs/assets/others/background-day.png").toExternalForm());
+        BackgroundSize size = new BackgroundSize(100, 100, true, true, true, false);
+        BackgroundImage bImage = new BackgroundImage(image, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, size);
+        menuScreen.setBackground(new Background(bImage));
+
     }
 }

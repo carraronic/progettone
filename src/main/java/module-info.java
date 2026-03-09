@@ -4,6 +4,7 @@ module levi.progettone {
     requires java.desktop;
     requires javafx.graphics;
     requires javafx.base;
+    requires jdk.xml.dom;
 
 
     opens levi.progettone to javafx.fxml;

@@ -1,10 +1,14 @@
 .root {
     -fx-font-family: "Segoe UI", Helvetica, Arial, sans-serif;
 }
-
-#gameScreen, #menuScreen{
-    -fx-background-color: black;
+.vbox-sfondo {
+    -fx-background-image: url("levi/progettone/imgs/assets/others/background-day.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-size: cover;
+    -fx-background-position: center;
 }
+
+
 
 .button {
     -fx-text-fill: black;
