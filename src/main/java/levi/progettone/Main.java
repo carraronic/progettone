@@ -14,10 +14,9 @@ public class Main extends Application {
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("views/menu.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 432, 768);
-        stage.getIcons().add(new Image(Objects.requireNonNull(Main.class.getResource("imgs/sleep-car.png")).toExternalForm()));
-        stage.setTitle("menu");
+        stage.getIcons().add(new Image(Main.class.getResource("imgs/icon.png").toExternalForm()));
+        stage.setTitle("Flappy Bird!");
         stage.setScene(scene);
-//        stage.setFullScreen(true);
         stage.show();
     }
 

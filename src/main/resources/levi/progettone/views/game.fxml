@@ -4,7 +4,7 @@
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 
-<VBox fx:id="gameScreen" alignment="CENTER" onKeyPressed="#input" prefHeight="768.0" prefWidth="432.0" stylesheets="@../css/style.css" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="levi.progettone.controller.GameController">
+<VBox fx:id="gameScreen" alignment="CENTER" onMouseClicked="#input" prefHeight="768.0" prefWidth="432.0" stylesheets="@../css/style.css" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="levi.progettone.controller.GameController">
    <HBox alignment="CENTER" prefHeight="35.0" prefWidth="93.0">
       <children>
          <ImageView fx:id="p3" fitHeight="54.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true" />
@@ -12,6 +12,13 @@
          <ImageView fx:id="p1" fitHeight="54.0" fitWidth="36.0" layoutX="210.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true" />
       </children>
    </HBox>
-   <Pane fx:id="level" focusTraversable="true" prefHeight="670.0" prefWidth="432.0" />
+   <Pane fx:id="level" focusTraversable="true" prefHeight="670.0" prefWidth="432.0">
+      <children>
+         <ImageView fx:id="player" fitHeight="60.0" fitWidth="60.0" layoutX="186.0" layoutY="244.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+               <Image url="@../imgs/sprites/yellowbird-midflap.png" />
+            </image>
+         </ImageView>
+      </children></Pane>
    <Button fx:id="back" mnemonicParsing="false" onAction="#goBack" prefHeight="20.0" prefWidth="150.0" text="Go Back" />
 </VBox>

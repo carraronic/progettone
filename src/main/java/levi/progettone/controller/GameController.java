@@ -1,29 +1,20 @@
 package levi.progettone.controller;
 
-import javafx.animation.Interpolator;
-import javafx.animation.PathTransition;
+import javafx.animation.AnimationTimer;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.KeyCode;
-import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseButton;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 import javafx.scene.shape.*;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
-import javafx.util.Duration;
-import levi.progettone.model.Player;
-import javafx.scene.paint.Color;
-import org.w3c.dom.css.Rect;
-import org.w3c.dom.ls.LSOutput;
-
-import java.util.ArrayList;
 
 public class GameController {
 
@@ -39,32 +30,35 @@ public class GameController {
     private ImageView p2;
     @FXML
     private ImageView p3;
+    @FXML
+    private ImageView player;
 
-    double v = 100;
+    //immagini
+    Image up = new Image(getClass().getResource("/levi/progettone/imgs/sprites/yellowbird-upflap.png").toExternalForm());
+    Image down = new Image(getClass().getResource("/levi/progettone/imgs/sprites/yellowbird-downflap.png").toExternalForm());
+    Image mid = new Image(getClass().getResource("/levi/progettone/imgs/sprites/yellowbird-midflap.png").toExternalForm());
 
-    double baseX = (v/2);
-    double baseY = (v/2);
-
-    int punti;
+    //font
     Font font = Font.loadFont(getClass().getResourceAsStream("/levi/progettone/font/flappy-font.ttf"), 13);
 
-    int pos;
-    boolean controllo = true;
-
-    ArrayList<Rectangle> obsList = new ArrayList<>();
-    ArrayList<Rectangle> coinList = new ArrayList<>();
-
-    Player p = new Player(baseX, baseY);
-    Rectangle player = new Rectangle(v, v); // w -> h
-    Rectangle obstacle = new Rectangle(v*pos, 0, v*2, v*2); // sinistra -> alto | w -> h
-    Rectangle invisible = new Rectangle(v, v);
-
-
+    //gameplay
+    int punti;
+    AnimationTimer loop;
+    double velocitaY = 0;
+    double gravita = 0.2; // minore --> lento
 
     public void initialize(){
-        punti = 0;
-        aggiornaPunti();
+        reset();
+        loop = new AnimationTimer() {
+            @Override
+            public void handle(long l) {
+                update();
+            }
+        };
+        loop.start();
+
         init();
+        aggiornaPunti();
     }
 
     @FXML
@@ -72,12 +66,11 @@ public class GameController {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/levi/progettone/views/menu.fxml"));
 
-            Scene scene = new Scene(loader.load(),432, 768);
+            Scene scene = new Scene(loader.load(), 432, 768);
             Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
 
             window.setTitle("menu");
             window.setScene(scene);
-//            window.setFullScreen(true);
             window.show();
 
         } catch (Exception e) {
@@ -85,128 +78,96 @@ public class GameController {
         }
     }
 
-    public void input(KeyEvent event){
-        KeyCode c = event.getCode();
-
-        switch(c){
-            case W, UP:
-                p.move(1);
-                break;
-            case S, DOWN:
-                p.move(2);
-                break;
-            case A, LEFT:
-                p.move(3);
-                break;
-            case D, RIGHT:
-                p.move(4);
-                break;
-            default:
-                break;
-        }
-
-        invisible.setY(p.getY() - v/2);
-        invisible.setX(p.getX() - v/2);
-        if(!collisionCheck(invisible)){
-            movement(player);
-            collisionCheck(player);
-        }
-
-        punti++;
-        aggiornaPunti();
-
-    }
-
     @FXML
-    public void start(){
-        player.setWidth(v);
-        player.setHeight(v);
-        player.setX(0);
+    public void input(MouseEvent event){
+        if(event.getButton().equals(MouseButton.PRIMARY)){
+            jump();
+            punti++;
+            aggiornaPunti();
+        }
+    }
+
+    private void jump(){
+        velocitaY = -6;  // minore --> salto più potente
+    }
+
+    public boolean collisionCheck(){
+        return player.getLayoutY() + player.getY() >= level.getHeight();
+    }
+
+    public void moveY(double v){
+        player.setY(player.getY() + v);
+    }
+
+    public void reset(){
         player.setY(0);
-        player.setFill(Color.PURPLE);
-
-        invisible.setWidth(v);
-        invisible.setHeight(v);
-        invisible.setX(0);
-        invisible.setY(0);
-        invisible.setFill(Color.TRANSPARENT);
-
-        for (int i = 0; i < 7; i++) {
-            pos = (int) (Math.random() * 10);
-            Rectangle obstacle = new Rectangle(v*pos, (pos>5? 0 : 800), v*2, v*2);
-            obstacle.setFill(Color.BLACK);
-            obsList.add(obstacle);
-            level.getChildren().add(obstacle);
-        }
-
-        pos = 0;
-        for (int i = 0; i < 10; i++) {
-            Rectangle coin = new Rectangle(pos>5? 330 : 500, 400, v/2, v/2);
-            coin.setFill(Color.YELLOW);
-            coinList.add(coin);
-            level.getChildren().add(coin);
-        }
-
-        level.getChildren().addAll(player);
+        velocitaY = 0;
+        punti = 0;
+        aggiornaPunti();
     }
 
-    public boolean collisionCheck(Rectangle r){
-        for(Node n : level.getChildren()){
-            if(r.getBoundsInParent().intersects(n.getBoundsInParent())){
-                if(coinList.contains(n)){
-                    n = new Rectangle(pos>5? 200 : 470, 400, v/2, v/2);
-                    return true;
-                }
-                if(obsList.contains(n)){
-                    return true;
-                }
-            }
+    public void update(){
+        velocitaY += gravita;
+        moveY(velocitaY);
+
+        //controllo per l'immagine
+        if(velocitaY < -1){
+            player.setImage(up);
+        }else if(velocitaY > 1){
+            player.setImage(down);
+        }else{
+            player.setImage(mid);
         }
-        return false;
-    }
 
-    public void movement(Rectangle r){
-        Path path = new Path();
-        path.getElements().add(new MoveTo(baseX, baseY)); // starting point
-        path.getElements().add(new LineTo(p.getX(), p.getY()));
+        // collisione con il bordo inferiore
+        if(collisionCheck()){
+            reset();
+        }
 
-        baseX = p.getX();
-        baseY = p.getY();
-        PathTransition transition = new PathTransition();
-        transition.setDuration(Duration.millis(70));
-        transition.setNode(r);
-        transition.setPath(path);
-        transition.setInterpolator(Interpolator.LINEAR);
-
-        transition.play();
-
-//        r.setY(p.getY());
-//        r.setX(p.getX());
+        // collisione con il bordo superiore
+        if(player.getLayoutY() + player.getY() < 0){
+            player.setY(-player.getLayoutY());
+            velocitaY = 0;
+        }
     }
 
     public void init(){
-        Image image = new Image(getClass().getResource("/levi/progettone/imgs/assets/others/background-day.png").toExternalForm());
-        BackgroundSize size = new BackgroundSize(100, 100, true, true, true, false);
-        BackgroundImage bImage = new BackgroundImage(image, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, size);
-        gameScreen.setBackground(new Background(bImage));
+        //inizializza il background, il font e i punti
+        setBG(true);
         back.setStyle("-fx-font-family: '" + font.getFamily() + "'; -fx-font-size: 13;");
+        punti = 0;
     }
 
     public void aggiornaPunti(){
+        //aggiorna il display dei punti
         if(punti < 10){
-            p1.setImage(new Image(getClass().getResource("/levi/progettone/imgs/assets/numbers/" + punti + ".png").toExternalForm()));
-            p2.setImage(new Image(getClass().getResource("/levi/progettone/imgs/assets/numbers/0.png").toExternalForm()));
-            p3.setImage(new Image(getClass().getResource("/levi/progettone/imgs/assets/numbers/0.png").toExternalForm()));
+            p1.setImage(new Image(getClass().getResource("/levi/progettone/imgs/numbers/" + punti + ".png").toExternalForm()));
+            p2.setImage(new Image(getClass().getResource("/levi/progettone/imgs/numbers/0.png").toExternalForm()));
+            p3.setImage(new Image(getClass().getResource("/levi/progettone/imgs/numbers/0.png").toExternalForm()));
         }else if (punti < 100){
-            p1.setImage(new Image(getClass().getResource("/levi/progettone/imgs/assets/numbers/" + (punti % 10) + ".png").toExternalForm()));
-            p2.setImage(new Image(getClass().getResource("/levi/progettone/imgs/assets/numbers/" + punti/10 + ".png").toExternalForm()));
-            p3.setImage(new Image(getClass().getResource("/levi/progettone/imgs/assets/numbers/0.png").toExternalForm()));
+            p1.setImage(new Image(getClass().getResource("/levi/progettone/imgs/numbers/" + (punti % 10) + ".png").toExternalForm()));
+            p2.setImage(new Image(getClass().getResource("/levi/progettone/imgs/numbers/" + punti/10 + ".png").toExternalForm()));
+            p3.setImage(new Image(getClass().getResource("/levi/progettone/imgs/numbers/0.png").toExternalForm()));
         }else{
-            p1.setImage(new Image(getClass().getResource("/levi/progettone/imgs/assets/numbers/" + (punti % 10) + ".png").toExternalForm()));
-            p2.setImage(new Image(getClass().getResource("/levi/progettone/imgs/assets/numbers/" + ((punti/10) % 10) + ".png").toExternalForm()));
-            p3.setImage(new Image(getClass().getResource("/levi/progettone/imgs/assets/numbers/" + (punti/100) + ".png").toExternalForm()));
+            p1.setImage(new Image(getClass().getResource("/levi/progettone/imgs/numbers/" + (punti % 10) + ".png").toExternalForm()));
+            p2.setImage(new Image(getClass().getResource("/levi/progettone/imgs/numbers/" + ((punti/10) % 10) + ".png").toExternalForm()));
+            p3.setImage(new Image(getClass().getResource("/levi/progettone/imgs/numbers/" + (punti/100) + ".png").toExternalForm()));
         }
     }
+
+    public void setBG(boolean dn){
+        Image image;
+        if(dn){
+            image = new Image(getClass().getResource("/levi/progettone/imgs/others/background-day.png").toExternalForm());
+        }else{
+            image = new Image(getClass().getResource("/levi/progettone/imgs/others/background-night.png").toExternalForm());
+        }
+        BackgroundSize size = new BackgroundSize(100, 100, true, true, true, false);
+        BackgroundImage bImage = new BackgroundImage(image, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, size);
+        gameScreen.setBackground(new Background(bImage));
+    }
+
+
 
 
 }

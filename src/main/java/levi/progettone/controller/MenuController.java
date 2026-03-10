@@ -39,11 +39,11 @@ public class MenuController {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/levi/progettone/views/game.fxml"));
 
             Scene scene = new Scene(loader.load(),432, 768);
+            scene.getRoot().requestFocus();
             Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
 
-            window.setTitle("game");
+            window.setTitle("Flappy Bird!");
             window.setScene(scene);
-//            window.setFullScreen(true);
             window.show();
 
         } catch (Exception e) {
@@ -59,8 +59,8 @@ public class MenuController {
 
     @FXML
     private void impostaBanner(){
-        gameImage.setImage(new Image(getClass().getResource("/levi/progettone/imgs/assets/others/message.png").toExternalForm()));
-        Image image = new Image(getClass().getResource("/levi/progettone/imgs/assets/others/background-day.png").toExternalForm());
+        gameImage.setImage(new Image(getClass().getResource("/levi/progettone/imgs/others/message.png").toExternalForm()));
+        Image image = new Image(getClass().getResource("/levi/progettone/imgs/others/background-day.png").toExternalForm());
         BackgroundSize size = new BackgroundSize(100, 100, true, true, true, false);
         BackgroundImage bImage = new BackgroundImage(image, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, size);
         menuScreen.setBackground(new Background(bImage));
