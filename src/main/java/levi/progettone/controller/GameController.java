@@ -15,6 +15,9 @@ import javafx.scene.layout.*;
 import javafx.scene.shape.*;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
+import levi.progettone.Main;
+
+import java.io.IOException;
 
 public class GameController {
 
@@ -32,6 +35,8 @@ public class GameController {
     private ImageView p3;
     @FXML
     private ImageView player;
+    @FXML
+    private HBox piattaforma;
 
     //immagini
     Image up = new Image(getClass().getResource("/levi/progettone/imgs/sprites/yellowbird-upflap.png").toExternalForm());
@@ -62,20 +67,8 @@ public class GameController {
     }
 
     @FXML
-    public void goBack(ActionEvent event) {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/levi/progettone/views/menu.fxml"));
-
-            Scene scene = new Scene(loader.load(), 432, 768);
-            Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
-
-            window.setTitle("menu");
-            window.setScene(scene);
-            window.show();
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+    public void goBack() throws IOException {
+        Main.setRoot("views/menu");
     }
 
     @FXML
@@ -110,6 +103,16 @@ public class GameController {
         velocitaY += gravita;
         moveY(velocitaY);
 
+        //cambio sfondo
+        switch(punti){
+            case 50, 150, 250, 350, 450, 550, 650, 750, 850, 950:
+                setBG(false);
+                break;
+            case 100, 200, 300, 400, 500, 600, 700, 800, 900:
+                setBG(true);
+                break;
+        }
+
         //controllo per l'immagine
         if(velocitaY < -1){
             player.setImage(up);
@@ -134,7 +137,7 @@ public class GameController {
     public void init(){
         //inizializza il background, il font e i punti
         setBG(true);
-        back.setStyle("-fx-font-family: '" + font.getFamily() + "'; -fx-font-size: 13;");
+        back.setStyle("-fx-font-family: '" + font.getFamily() + "'; -fx-font-size: 20;");
         punti = 0;
     }
 
@@ -165,6 +168,11 @@ public class GameController {
         BackgroundSize size = new BackgroundSize(100, 100, true, true, true, false);
         BackgroundImage bImage = new BackgroundImage(image, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, size);
         gameScreen.setBackground(new Background(bImage));
+
+        image = new Image(getClass().getResource("/levi/progettone/imgs/others/base.png").toExternalForm());
+        size = new BackgroundSize(100, 100, true, true, true, false);
+        bImage = new BackgroundImage(image, BackgroundRepeat.REPEAT, BackgroundRepeat.REPEAT, BackgroundPosition.CENTER, size);
+        piattaforma.setBackground(new Background(bImage));
     }
 
 

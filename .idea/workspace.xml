@@ -9,28 +9,6 @@
       <change beforePath="$PROJECT_DIR$/src/main/java/levi/progettone/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/levi/progettone/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/levi/progettone/controller/GameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/levi/progettone/controller/GameController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/levi/progettone/controller/MenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/levi/progettone/controller/MenuController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/levi/progettone/model/Player.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/levi/progettone/imgs/assets/numbers/0.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/levi/progettone/imgs/assets/numbers/1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/levi/progettone/imgs/assets/numbers/2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/levi/progettone/imgs/assets/numbers/3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/levi/progettone/imgs/assets/numbers/4.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/levi/progettone/imgs/assets/numbers/5.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/levi/progettone/imgs/assets/numbers/6.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/levi/progettone/imgs/assets/numbers/7.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/levi/progettone/imgs/assets/numbers/8.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/levi/progettone/imgs/assets/numbers/9.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/levi/progettone/imgs/assets/others/background-day.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/levi/progettone/imgs/assets/others/background-night.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/levi/progettone/imgs/assets/others/base.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/levi/progettone/imgs/assets/others/gameover.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/levi/progettone/imgs/assets/others/message.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/levi/progettone/imgs/assets/sprites/pipe-green.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/levi/progettone/imgs/assets/sprites/yellowbird-downflap.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/levi/progettone/imgs/assets/sprites/yellowbird-midflap.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/levi/progettone/imgs/assets/sprites/yellowbird-upflap.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/levi/progettone/imgs/banner.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/levi/progettone/imgs/sleep-car.png" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/levi/progettone/views/game.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/levi/progettone/views/game.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -42,6 +20,13 @@
     <persistenceIdMap>
       <entry key="_C:/Users/carra/Desktop/Code/JAVA/progettone" value="3Ahl7sq6dVwJ22ksRS7lBaD7xc5" />
     </persistenceIdMap>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -55,7 +40,7 @@
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
     &quot;url&quot;: &quot;https://github.com/carraronic/progettone.git&quot;,
-    &quot;accountId&quot;: &quot;be1f6f32-dfa4-4bc2-b1e3-6cc03f713b7d&quot;
+    &quot;accountId&quot;: &quot;2fddc1b0-051d-4991-91fc-3b556b1b843a&quot;
   }
 }</component>
   <component name="MavenImportPreferences">
@@ -82,14 +67,19 @@
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;master&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/carraro.nicolo/Desktop/FlappyBird&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/carraro.nicolo/Desktop/random stuff/prog/src/main/resources/levi/progettone/views&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;project.propCompiler&quot;
   }
 }</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\carraro.nicolo\Desktop\random stuff\prog\src\main\resources\levi\progettone\views" />
+    </key>
+  </component>
   <component name="RunManager">
     <configuration name="main" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="levi.progettone.Main" />
-      <module name="progettone" />
+      <module name="Progettone" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>

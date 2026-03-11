@@ -1,9 +1,7 @@
 package levi.progettone.controller;
 
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
@@ -12,6 +10,9 @@ import javafx.scene.layout.*;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import javafx.event.ActionEvent;
+import levi.progettone.Main;
+
+import java.io.IOException;
 
 public class MenuController {
 
@@ -34,21 +35,8 @@ public class MenuController {
     }
 
     @FXML
-    public void goStart(ActionEvent event) {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/levi/progettone/views/game.fxml"));
-
-            Scene scene = new Scene(loader.load(),432, 768);
-            scene.getRoot().requestFocus();
-            Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
-
-            window.setTitle("Flappy Bird!");
-            window.setScene(scene);
-            window.show();
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+    public void goStart() throws IOException {
+        Main.setRoot("views/game");
     }
 
     @FXML
