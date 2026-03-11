@@ -6,9 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="152df0e0-3b82-40b7-b3d7-22205a2f38a0" name="Changes" comment="messo font + grafica (manca il gameplay)">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/levi/progettone/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/levi/progettone/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/levi/progettone/controller/GameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/levi/progettone/controller/GameController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/levi/progettone/controller/MenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/levi/progettone/controller/MenuController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/levi/progettone/views/game.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/levi/progettone/views/game.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -40,7 +38,7 @@
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
     &quot;url&quot;: &quot;https://github.com/carraronic/progettone.git&quot;,
-    &quot;accountId&quot;: &quot;2fddc1b0-051d-4991-91fc-3b556b1b843a&quot;
+    &quot;accountId&quot;: &quot;be1f6f32-dfa4-4bc2-b1e3-6cc03f713b7d&quot;
   }
 }</component>
   <component name="MavenImportPreferences">
