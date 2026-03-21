@@ -263,7 +263,7 @@ public class GameController {
         ArrayList<ImageView> outOfScreen = new ArrayList<>();
 
         for(ImageView o : obstacles){
-            moveObs(o, -0.75);
+            moveObs(o, -1.2);
             if(o.getX() <= -o.getFitWidth()){
                 outOfScreen.add(o);
             }

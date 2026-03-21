@@ -4,6 +4,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -14,6 +15,7 @@ public class Main extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         scene = new Scene(loadFXML("views/menu"), 432, 768);
+        stage.getIcons().add(new Image(Main.class.getResource("imgs/icon.png").toExternalForm()));
         stage.setScene(scene);
         stage.show();
     }
