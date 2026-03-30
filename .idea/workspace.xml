@@ -4,9 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="152df0e0-3b82-40b7-b3d7-22205a2f38a0" name="Changes" comment="messo font + grafica (manca il gameplay)">
+    <list default="true" id="152df0e0-3b82-40b7-b3d7-22205a2f38a0" name="Changes" comment="messo icona app :P">
+      <change afterPath="$PROJECT_DIR$/src/main/java/levi/progettone/model/Difficolta.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/levi/progettone/controller/GameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/levi/progettone/controller/GameController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/levi/progettone/controller/MenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/levi/progettone/controller/MenuController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/levi/progettone/views/game.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/levi/progettone/views/game.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/levi/progettone/views/menu.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/levi/progettone/views/menu.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,6 +26,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Class" />
+        <option value="Enum" />
       </list>
     </option>
   </component>
@@ -98,7 +103,15 @@
       <option name="project" value="LOCAL" />
       <updated>1773075804447</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="messo icona app :P">
+      <option name="closed" value="true" />
+      <created>1774081355290</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1774081355290</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -114,7 +127,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="messo font + grafica (manca il gameplay)" />
-    <option name="LAST_COMMIT_MESSAGE" value="messo font + grafica (manca il gameplay)" />
+    <MESSAGE value="messo icona app :P" />
+    <option name="LAST_COMMIT_MESSAGE" value="messo icona app :P" />
   </component>
   <component name="github-copilot-workspace">
     <instructionFileLocations>

@@ -6,6 +6,11 @@
 <?import javafx.scene.text.*?>
 
 <VBox fx:id="gameScreen" alignment="CENTER" onMouseClicked="#input" prefHeight="768.0" prefWidth="432.0" stylesheets="@../css/style.css" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="levi.progettone.controller.GameController">
+   <Label fx:id="diff" prefWidth="432.0" style="-fx-alignment: center; -fx-font-size: 20;" text="Difficulty: " textAlignment="RIGHT">
+      <font>
+         <Font name="System Bold" size="12.0" />
+      </font>
+   </Label>
    <Pane fx:id="level" focusTraversable="true" prefHeight="700.0" prefWidth="432.0">
       <children>
          <ImageView fx:id="player" fitHeight="60.0" fitWidth="60.0" layoutX="186.0" layoutY="244.0" pickOnBounds="true" preserveRatio="true">

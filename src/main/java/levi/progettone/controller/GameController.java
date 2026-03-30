@@ -1,24 +1,23 @@
 package levi.progettone.controller;
 
 import javafx.animation.AnimationTimer;
-import javafx.event.ActionEvent;
+import javafx.animation.Interpolator;
+import javafx.animation.RotateTransition;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
-import javafx.scene.shape.*;
 import javafx.scene.text.Font;
-import javafx.stage.Stage;
+import javafx.util.Duration;
 import levi.progettone.Main;
+import levi.progettone.model.Difficolta;
+import levi.progettone.model.Gamedata;
 
 import java.io.IOException;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -42,6 +41,8 @@ public class GameController {
     private HBox piattaforma;
     @FXML
     private HBox pointCounter;
+    @FXML
+    private Label diff;
 
     //immagini
     Image up = new Image(getClass().getResource("/levi/progettone/imgs/sprites/yellowbird-upflap.png").toExternalForm());
@@ -54,11 +55,17 @@ public class GameController {
     //gameplay
     int punti;
     AnimationTimer loop;
-    double velocitaY = 0;
-    double gravita = 0.2; // minore --> lento
+    double velocitaY;
+    double gravita;
+    double potenzaSalto;
+    double obsSpeed;
+    Difficolta d;
+
     Random rand = new Random();
     int time = 0;
     ArrayList<ImageView> obs = new ArrayList<>();
+
+
 
     public void initialize(){
 
@@ -80,6 +87,14 @@ public class GameController {
         aggiornaPunti();
     }
 
+    private void stats(){
+        velocitaY = Gamedata.velocitaY;
+        gravita = Gamedata.gravita;
+        potenzaSalto = Gamedata.potenzaSalto;
+        obsSpeed = Gamedata.obsSpeed;
+        d = Gamedata.diff;
+    }
+
     @FXML
     public void goBack() throws IOException {
         Main.setRoot("views/menu");
@@ -93,7 +108,7 @@ public class GameController {
     }
 
     private void jump(){
-        velocitaY = -4;  // minore --> salto più potente
+        velocitaY = potenzaSalto;  // minore --> salto più potente
     }
 
     public boolean collisionCheck(){
@@ -164,10 +179,13 @@ public class GameController {
         // Animazione sprite in base alla velocità verticale
         if(velocitaY < -1){
             player.setImage(up);
+            ruota(1);
         } else if(velocitaY > 1){
             player.setImage(down);
+            ruota(2);
         } else {
             player.setImage(mid);
+            ruota(3);
         }
 
         // Collisione con il bordo inferiore
@@ -193,11 +211,37 @@ public class GameController {
         checkScore();
     }
 
+    private void ruota(int index){
+        RotateTransition transition = new RotateTransition(Duration.seconds(0.5), player);
+
+        switch(index){
+            case 1: //sale
+                transition.setFromAngle(player.getRotate());
+                transition.setToAngle(-45);
+                break;
+            case 2: //scende
+                transition.setFromAngle(player.getRotate());
+                transition.setToAngle(45);
+                break;
+            case 3: //fermo
+                transition.setFromAngle(player.getRotate());
+                transition.setToAngle(0);
+                break;
+        }
+
+        transition.setInterpolator(Interpolator.LINEAR);
+
+        transition.play();
+    }
+
     public void init(){
+        stats();
         //inizializza il background, il font e i punti
         setBG(true);
         back.setStyle("-fx-font-family: '" + font.getFamily() + "'; -fx-font-size: 20;");
+        diff.setStyle("-fx-font-family: '" + font.getFamily() + "'; -fx-font-size: 25; -fx-alignment: center; -fx-background-color: white;");
         punti = 0;
+        diff.setText(diff.getText() + d);
     }
 
     public void aggiornaPunti(){
@@ -263,7 +307,7 @@ public class GameController {
         ArrayList<ImageView> outOfScreen = new ArrayList<>();
 
         for(ImageView o : obstacles){
-            moveObs(o, -1.2);
+            moveObs(o, obsSpeed);
             if(o.getX() <= -o.getFitWidth()){
                 outOfScreen.add(o);
             }

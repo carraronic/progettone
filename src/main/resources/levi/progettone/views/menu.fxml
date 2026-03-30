@@ -21,8 +21,14 @@
          <Font size="29.0" />
       </font>
    </Label>
-  <Button fx:id="start" onAction="#goStart" prefHeight="50.0" prefWidth="150.0" text="START" textAlignment="CENTER" />
-   <Button fx:id="exit" mnemonicParsing="false" onAction="#esci" prefHeight="50.0" prefWidth="150.0" text="QUIT" />
+   <ComboBox fx:id="comboDiff" prefHeight="20.0" prefWidth="200.0" promptText="Seleziona difficoltà" />
+   <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="10.0">
+      <children>
+        <Button fx:id="start" onAction="#goStart" prefHeight="50.0" prefWidth="200.0" text="START" textAlignment="CENTER" />
+         <Button fx:id="options" onAction="#opt" prefHeight="50.0" prefWidth="200.0" text="OPTIONS" textAlignment="CENTER" />
+         <Button fx:id="exit" mnemonicParsing="false" onAction="#esci" prefHeight="50.0" prefWidth="200.0" text="QUIT" />
+      </children>
+   </VBox>
    <Label>
       <font>
          <Font size="50.0" />

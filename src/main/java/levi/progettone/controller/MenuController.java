@@ -3,6 +3,7 @@ package levi.progettone.controller;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -11,6 +12,7 @@ import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import javafx.event.ActionEvent;
 import levi.progettone.Main;
+import levi.progettone.model.Difficolta;
 
 import java.io.IOException;
 
@@ -21,17 +23,24 @@ public class MenuController {
     @FXML
     private Button exit;
     @FXML
+    private Button options;
+    @FXML
     private Label author;
     @FXML
     private ImageView gameImage;
     @FXML
     private VBox menuScreen;
+    @FXML
+    private ComboBox<Difficolta> comboDiff;
 
     Font font = Font.loadFont(getClass().getResourceAsStream("/levi/progettone/font/flappy-font.ttf"), 13);
 
     public void initialize(){
         impostaFont();
         impostaBanner();
+
+        comboDiff.getItems().addAll(Difficolta.EASY, Difficolta.NORMAL, Difficolta.HARD);
+        comboDiff.getSelectionModel().select(Difficolta.NORMAL);
     }
 
     @FXML
@@ -58,7 +67,14 @@ public class MenuController {
     private void impostaFont(){
         author.setText("by nic :P");
         author.setStyle("-fx-font-family: '" + font.getFamily() + "'; -fx-font-size: 16;");
-        exit.setStyle("-fx-font-family: '" + font.getFamily() + "'; -fx-font-size: 30;");
-        start.setStyle("-fx-font-family: '" + font.getFamily() + "'; -fx-font-size: 30;");
+        exit.setStyle("-fx-font-family: '" + font.getFamily() + "'; -fx-font-size: 25;");
+        options.setStyle("-fx-font-family: '" + font.getFamily() + "'; -fx-font-size: 25;");
+        start.setStyle("-fx-font-family: '" + font.getFamily() + "'; -fx-font-size: 25;");
+        comboDiff.setStyle("-fx-font-family: '" + font.getFamily() + "'; -fx-font-size: 25;");
+    }
+
+    @FXML
+    public void opt() throws IOException {
+        Main.setRoot("views/options");
     }
 }
