@@ -93,6 +93,8 @@ public class GameController {
         potenzaSalto = Gamedata.potenzaSalto;
         obsSpeed = Gamedata.obsSpeed;
         d = Gamedata.diff;
+
+        System.out.println(gravita + " " + obsSpeed + " " + d);
     }
 
     @FXML
@@ -280,7 +282,7 @@ public class GameController {
 
     private void initObsacles(){
         int w = 52;
-        double x = level.getWidth() - 50;
+        double x = level.getWidth();// - 50
         double spaceBtw = 200;
         double topHeight = rand.nextInt((int)(level.getHeight() - spaceBtw - 100) + 50);
         double botHeight = level.getHeight() - spaceBtw - topHeight;

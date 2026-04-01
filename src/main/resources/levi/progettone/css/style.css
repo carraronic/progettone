@@ -46,3 +46,9 @@
     -fx-background-size: cover;
     -fx-background-position: center center;
 }
+
+.outline {
+    -fx-fill: white;
+    -fx-stroke: black;
+    -fx-stroke-width: 10px;
+}

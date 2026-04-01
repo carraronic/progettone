@@ -1,6 +1,54 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" />
+<VBox fx:id="optionVbox" alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="432.0" stylesheets="@../css/style.css" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="levi.progettone.controller.OptionController">
+   <children>
+      <Label fx:id="title" styleClass="outline" text="GAME OPTIONS">
+         <VBox.margin>
+            <Insets bottom="50.0" top="20.0" />
+         </VBox.margin></Label>
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="20.0">
+         <children>
+            <Label fx:id="l1" styleClass="outline" text="DIFFICOLTA'" />
+            <Region HBox.hgrow="ALWAYS" />
+            <ComboBox fx:id="comboDiff" onAction="#cambiaDiff" prefWidth="200.0" styleClass="outline" />
+         </children></HBox>
+      <HBox alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="100.0" prefWidth="200.0" spacing="30.0">
+         <children>
+            <Label fx:id="l2" styleClass="outline" text="GRAVITA'" />
+            <Region HBox.hgrow="ALWAYS" />
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Button fx:id="menoGravita" mnemonicParsing="false" onAction="#setGravity" prefHeight="30.0" prefWidth="30.0" styleClass="outline" text="-" />
+                  <TextField fx:id="vGravity" editable="false" prefHeight="30.0" prefWidth="80.0" styleClass="outline" />
+                  <Button fx:id="piuGravita" mnemonicParsing="false" onAction="#setGravity" prefHeight="30.0" prefWidth="30.0" styleClass="outline" text="+" />
+               </children>
+            </HBox>
+         </children>
+      </HBox>
+      <HBox alignment="CENTER" layoutX="10.0" layoutY="678.0" prefHeight="100.0" prefWidth="200.0" spacing="20.0">
+         <children>
+            <Label fx:id="l3" styleClass="outline" text="VELOCITA' OSTACOLI" wrapText="true" />
+            <Region HBox.hgrow="ALWAYS" />
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Button fx:id="menoObs" mnemonicParsing="false" onAction="#setObsSpeed" prefHeight="30.0" prefWidth="30.0" styleClass="outline" text="-" />
+                  <TextField fx:id="vObs" editable="false" prefHeight="30.0" prefWidth="80.0" styleClass="outline" />
+                  <Button fx:id="piuObs" mnemonicParsing="false" onAction="#setObsSpeed" prefHeight="30.0" prefWidth="30.0" styleClass="outline" text="+" />
+               </children>
+            </HBox>
+         </children>
+      </HBox>
+      <HBox alignment="TOP_CENTER" prefHeight="100.0" prefWidth="200.0" spacing="50.0">
+         <children>
+            <Button fx:id="annulla" mnemonicParsing="false" onAction="#back" styleClass="outline" text="ANNULLA" />
+            <Button fx:id="applica" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#save" styleClass="outline" text="APPLICA" />
+         </children></HBox>
+   </children>
+   <padding>
+      <Insets left="20.0" right="20.0" />
+   </padding>
+</VBox>

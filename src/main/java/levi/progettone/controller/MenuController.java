@@ -13,6 +13,7 @@ import javafx.stage.Stage;
 import javafx.event.ActionEvent;
 import levi.progettone.Main;
 import levi.progettone.model.Difficolta;
+import levi.progettone.model.Gamedata;
 
 import java.io.IOException;
 
@@ -30,17 +31,12 @@ public class MenuController {
     private ImageView gameImage;
     @FXML
     private VBox menuScreen;
-    @FXML
-    private ComboBox<Difficolta> comboDiff;
 
     Font font = Font.loadFont(getClass().getResourceAsStream("/levi/progettone/font/flappy-font.ttf"), 13);
 
     public void initialize(){
         impostaFont();
         impostaBanner();
-
-        comboDiff.getItems().addAll(Difficolta.EASY, Difficolta.NORMAL, Difficolta.HARD);
-        comboDiff.getSelectionModel().select(Difficolta.NORMAL);
     }
 
     @FXML
@@ -70,7 +66,6 @@ public class MenuController {
         exit.setStyle("-fx-font-family: '" + font.getFamily() + "'; -fx-font-size: 25;");
         options.setStyle("-fx-font-family: '" + font.getFamily() + "'; -fx-font-size: 25;");
         start.setStyle("-fx-font-family: '" + font.getFamily() + "'; -fx-font-size: 25;");
-        comboDiff.setStyle("-fx-font-family: '" + font.getFamily() + "'; -fx-font-size: 25;");
     }
 
     @FXML
