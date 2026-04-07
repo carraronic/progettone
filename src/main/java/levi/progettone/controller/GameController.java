@@ -110,7 +110,12 @@ public class GameController {
     }
 
     private void jump(){
-        velocitaY = potenzaSalto;  // minore --> salto più potente
+        // minore --> salto più potente
+        if(d.equals(Difficolta.REVERSE)){
+            velocitaY = -(potenzaSalto);
+        }else{
+            velocitaY = potenzaSalto;
+        }
     }
 
     public boolean collisionCheck(){

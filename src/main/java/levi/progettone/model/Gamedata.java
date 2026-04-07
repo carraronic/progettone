@@ -12,6 +12,10 @@ public class Gamedata {
         gravita *= d.grav;
         diff = d;
         obsSpeed *= d.obs;
+
+        if (d.equals(Difficolta.REVERSE)){
+            gravita *= -1;
+        }
     }
 
     public static void set(double grav, double obs){

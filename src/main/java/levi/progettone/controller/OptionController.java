@@ -51,7 +51,7 @@ public class OptionController {
     double vObstacles = 1.0;
 
     public void initialize(){
-        comboDiff.getItems().addAll(Difficolta.EASY, Difficolta.NORMAL, Difficolta.HARD, Difficolta.CUSTOM);
+        comboDiff.getItems().addAll(Difficolta.EASY, Difficolta.NORMAL, Difficolta.HARD, Difficolta.CUSTOM, Difficolta.REVERSE);
         comboDiff.getSelectionModel().select(Difficolta.NORMAL);
         aggiornaDefault(Difficolta.NORMAL);
         impostaFont();
