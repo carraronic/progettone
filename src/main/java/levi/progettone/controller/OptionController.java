@@ -1,18 +1,25 @@
 package levi.progettone.controller;
 
+import javafx.animation.AnimationTimer;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.geometry.Rectangle2D;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.scene.text.Font;
 import levi.progettone.Main;
 import levi.progettone.model.Difficolta;
-import levi.progettone.model.Gamedata;
+import levi.progettone.model.GameData;
+import levi.progettone.model.Sprite;
 
 import java.io.IOException;
+import java.util.ArrayList;
+
 
 public class OptionController {
 
@@ -44,11 +51,20 @@ public class OptionController {
     private Label title;
     @FXML
     private VBox optionVbox;
+    @FXML
+    private Button spriteIndietro;
+    @FXML
+    private Button spriteAvanti;
+    @FXML
+    private ImageView character;
 
     Font font = Font.loadFont(getClass().getResourceAsStream("/levi/progettone/font/flappy-font.ttf"), 13);
 
     double vGravita = 1.0;
     double vObstacles = 1.0;
+
+    ArrayList<Sprite> sprites = GameData.characters;
+    int i = 0;
 
     public void initialize(){
         comboDiff.getItems().addAll(Difficolta.EASY, Difficolta.NORMAL, Difficolta.HARD, Difficolta.CUSTOM, Difficolta.REVERSE);
@@ -73,11 +89,19 @@ public class OptionController {
         title.setStyle("-fx-font-family: '" + font.getFamily() + "'; -fx-font-size: 40;");
         vObs.setStyle("-fx-font-family: '" + font.getFamily() + "'; -fx-font-size: 20;");
         vGravity.setStyle("-fx-font-family: '" + font.getFamily() + "'; -fx-font-size: 20;");
+        spriteAvanti.setStyle("-fx-font-family: '" + font.getFamily() + "'; -fx-font-size: 50;");
+        spriteIndietro.setStyle("-fx-font-family: '" + font.getFamily() + "'; -fx-font-size: 50;");
+
+        spriteAvanti.setText("\\"+"\n/");
+        spriteIndietro.setText("/\n" + "\\");
 
         Image image = new Image(getClass().getResource("/levi/progettone/imgs/others/background-day.png").toExternalForm());
         BackgroundSize size = new BackgroundSize(100, 100, true, true, true, false);
         BackgroundImage bImage = new BackgroundImage(image, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, size);
         optionVbox.setBackground(new Background(bImage));
+
+        character.setImage(sprites.getFirst().getCurrentSprite());
+        controlloBottoni();
     }
 
     @FXML
@@ -89,13 +113,14 @@ public class OptionController {
     public void save() throws IOException {
         Main.setRoot("views/menu");
         setStats();
+        GameData.setCharacter(sprites.get(i));
     }
 
     private void setStats(){
         if(comboDiff.getSelectionModel().getSelectedItem().equals(Difficolta.CUSTOM)){
-            Gamedata.set(vGravita, vObstacles);
+            GameData.set(vGravita, vObstacles);
         }else{
-            Gamedata.set(comboDiff.getSelectionModel().getSelectedItem());
+            GameData.set(comboDiff.getSelectionModel().getSelectedItem());
         }
     }
 
@@ -108,7 +133,7 @@ public class OptionController {
             aggiornaDefault(d);
         }else{
             editable(true);
-            Gamedata.set(d);
+            GameData.set(d);
             aggiornaDefault(d);
             aggiornaTesto();
         }
@@ -179,5 +204,38 @@ public class OptionController {
         vGravita = d.grav;
         vObstacles = d.obs;
         aggiornaTesto();
+    }
+
+    public void cambiaSprite(ActionEvent actionEvent) {
+        String s = ((Button)actionEvent.getSource()).getText();
+
+        controlloBottoni();
+
+        if(s.equals(spriteAvanti.getText())){
+            i++;
+            character.setImage(sprites.get(i).getCurrentSprite());
+        }else{
+            i--;
+            character.setImage(sprites.get(i).getCurrentSprite());
+        }
+
+        controlloBottoni();
+    }
+
+    private void controlloBottoni(){
+        if(i == 0){
+            spriteIndietro.setDisable(true);
+            if(sprites.size() == 1){
+                spriteAvanti.setDisable(true);
+            }else{
+                spriteAvanti.setDisable(false);
+            }
+        }else if(i+1 == sprites.size()){
+            spriteAvanti.setDisable(true);
+            spriteIndietro.setDisable(false);
+        }else{
+            spriteAvanti.setDisable(false);
+            spriteIndietro.setDisable(false);
+        }
     }
 }

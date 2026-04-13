@@ -14,8 +14,7 @@ import javafx.scene.layout.*;
 import javafx.scene.text.Font;
 import javafx.util.Duration;
 import levi.progettone.Main;
-import levi.progettone.model.Difficolta;
-import levi.progettone.model.Gamedata;
+import levi.progettone.model.*;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -45,12 +44,14 @@ public class GameController {
     private Label diff;
 
     //immagini
-    Image up = new Image(getClass().getResource("/levi/progettone/imgs/sprites/yellowbird-upflap.png").toExternalForm());
-    Image down = new Image(getClass().getResource("/levi/progettone/imgs/sprites/yellowbird-downflap.png").toExternalForm());
-    Image mid = new Image(getClass().getResource("/levi/progettone/imgs/sprites/yellowbird-midflap.png").toExternalForm());
+//    Image up = new Image(getClass().getResource("/levi/progettone/imgs/sprites/yellowbird-upflap.png").toExternalForm());
+//    Image down = new Image(getClass().getResource("/levi/progettone/imgs/sprites/yellowbird-downflap.png").toExternalForm());
+//    Image mid = new Image(getClass().getResource("/levi/progettone/imgs/sprites/yellowbird-midflap.png").toExternalForm());
 
     //font
     Font font = Font.loadFont(getClass().getResourceAsStream("/levi/progettone/font/flappy-font.ttf"), 13);
+
+    Sprite s = GameData.character;
 
     //gameplay
     int punti;
@@ -60,6 +61,8 @@ public class GameController {
     double potenzaSalto;
     double obsSpeed;
     Difficolta d;
+    boolean dnCycle;
+    boolean puntiAggiornati = false;
 
     Random rand = new Random();
     int time = 0;
@@ -88,11 +91,11 @@ public class GameController {
     }
 
     private void stats(){
-        velocitaY = Gamedata.velocitaY;
-        gravita = Gamedata.gravita;
-        potenzaSalto = Gamedata.potenzaSalto;
-        obsSpeed = Gamedata.obsSpeed;
-        d = Gamedata.diff;
+        velocitaY = GameData.velocitaY;
+        gravita = GameData.gravita;
+        potenzaSalto = GameData.potenzaSalto;
+        obsSpeed = GameData.obsSpeed;
+        d = GameData.diff;
 
         System.out.println(gravita + " " + obsSpeed + " " + d);
     }
@@ -153,7 +156,10 @@ public class GameController {
                     System.out.println(punti);
                     pipe.setUserData("passed");
                     aggiornaPunti();
+                    puntiAggiornati = true;
                     break;
+                }else{
+                    puntiAggiornati = false;
                 }
             }
 
@@ -174,26 +180,36 @@ public class GameController {
         }
 
         // Cambio sfondo
-        switch(punti){
-            case 50, 150, 250, 350, 450, 550, 650, 750, 850, 950:
-                setBG(false);
-                break;
-            case 100, 200, 300, 400, 500, 600, 700, 800, 900:
-                setBG(true);
-                break;
+//        switch(punti){
+//            case 50, 150, 250, 350, 450, 550, 650, 750, 850, 950:
+//                setBG(false);
+//                break;
+//            case 100, 200, 300, 400, 500, 600, 700, 800, 900:
+//                setBG(true);
+//                break;
+//        }
+
+        if(puntiAggiornati && punti % 50 == 0){
+            setBG(dnCycle);
         }
 
         // Animazione sprite in base alla velocità verticale
         if(velocitaY < -1){
-            player.setImage(up);
             ruota(1);
         } else if(velocitaY > 1){
-            player.setImage(down);
             ruota(2);
         } else {
-            player.setImage(mid);
             ruota(3);
         }
+
+        if(s instanceof Pipe){
+            ruotaTubo();
+        }
+
+        if(s instanceof Bird || s instanceof Pipe){
+            s.setSprite(velocitaY);
+        }
+        player.setImage(s.getCurrentSprite());
 
         // Collisione con il bordo inferiore
         double bottomBound = level.getHeight();
@@ -241,6 +257,15 @@ public class GameController {
         transition.play();
     }
 
+    private void ruotaTubo(){
+        RotateTransition transition = new RotateTransition(Duration.seconds(0.5), player);
+        transition.setFromAngle(player.getRotate());
+        transition.setToAngle(player.getRotate() + 360);
+        transition.setInterpolator(Interpolator.LINEAR);
+
+        transition.play();
+    }
+
     public void init(){
         stats();
         //inizializza il background, il font e i punti
@@ -283,6 +308,8 @@ public class GameController {
         size = new BackgroundSize(100, 100, true, true, true, false);
         bImage = new BackgroundImage(image, BackgroundRepeat.REPEAT, BackgroundRepeat.REPEAT, BackgroundPosition.CENTER, size);
         piattaforma.setBackground(new Background(bImage));
+
+        dnCycle = !dnCycle;
     }
 
     private void initObsacles(){
@@ -292,13 +319,13 @@ public class GameController {
         double topHeight = rand.nextInt((int)(level.getHeight() - spaceBtw - 100) + 50);
         double botHeight = level.getHeight() - spaceBtw - topHeight;
 
-        ImageView topPipe = new ImageView(new Image(getClass().getResource("/levi/progettone/imgs/sprites/pipe-green-flip.png").toExternalForm()));
+        ImageView topPipe = new ImageView(new Image(getClass().getResource("/levi/progettone/imgs/sprites/pipe/pipe-green-flip.png").toExternalForm()));
         topPipe.setX(x);
         topPipe.setFitWidth(w);
         topPipe.setY(0);
         topPipe.setFitHeight(topHeight);
 
-        ImageView botPipe = new ImageView(new Image(getClass().getResource("/levi/progettone/imgs/sprites/pipe-green.png").toExternalForm()));
+        ImageView botPipe = new ImageView(new Image(getClass().getResource("/levi/progettone/imgs/sprites/pipe/pipe-green.png").toExternalForm()));
         botPipe.setX(x);
         botPipe.setFitWidth(w);
         botPipe.setY(topHeight + spaceBtw);

@@ -3,7 +3,6 @@ package levi.progettone.controller;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -12,8 +11,6 @@ import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import javafx.event.ActionEvent;
 import levi.progettone.Main;
-import levi.progettone.model.Difficolta;
-import levi.progettone.model.Gamedata;
 
 import java.io.IOException;
 

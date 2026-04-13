@@ -2,6 +2,7 @@
 
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 
 <VBox fx:id="optionVbox" alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="432.0" stylesheets="@../css/style.css" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="levi.progettone.controller.OptionController">
@@ -10,6 +11,16 @@
          <VBox.margin>
             <Insets bottom="50.0" top="20.0" />
          </VBox.margin></Label>
+      <HBox prefHeight="200.0" prefWidth="200.0" spacing="20.0">
+         <children>
+            <Button fx:id="spriteIndietro" mnemonicParsing="false" onAction="#cambiaSprite" prefHeight="200.0" prefWidth="100.0" />
+            <ImageView fx:id="character" fitHeight="180.0" fitWidth="180.0" pickOnBounds="true" preserveRatio="true" HBox.hgrow="NEVER">
+               <HBox.margin>
+                  <Insets top="30.0" />
+               </HBox.margin></ImageView>
+            <Button fx:id="spriteAvanti" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#cambiaSprite" prefHeight="200.0" prefWidth="100.0" />
+         </children>
+      </HBox>
       <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="20.0">
          <children>
             <Label fx:id="l1" styleClass="outline" text="DIFFICOLTA'" />
