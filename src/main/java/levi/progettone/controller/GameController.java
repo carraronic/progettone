@@ -263,6 +263,8 @@ public class GameController {
         transition.setToAngle(player.getRotate() + 360);
         transition.setInterpolator(Interpolator.LINEAR);
 
+        //dopo 15 ottilioni di anni il programma crasherà per overflow (1,5 x 10^28)
+
         transition.play();
     }
 
