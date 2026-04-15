@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox fx:id="screen" alignment="CENTER" focusTraversable="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="432.0" spacing="60.0" stylesheets="@../css/style.css" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="levi.progettone.controller.GameoverController">
+   <children>
+      <ImageView fx:id="image" fitHeight="84.0" fitWidth="384.0" pickOnBounds="true" preserveRatio="true">
+         <VBox.margin>
+            <Insets bottom="130.0" />
+         </VBox.margin></ImageView>
+      <VBox alignment="CENTER" focusTraversable="true" prefHeight="200.0" prefWidth="100.0" spacing="20.0">
+         <children>
+            <Button fx:id="btn1" mnemonicParsing="false" onAction="#restart" prefHeight="50.0" prefWidth="200.0" text="RESTART" />
+            <Button fx:id="btn2" mnemonicParsing="false" onAction="#mainMenu" prefHeight="50.0" prefWidth="200.0" text="MAIN MENU" />
+         </children>
+      </VBox>
+   </children>
+</VBox>

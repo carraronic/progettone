@@ -43,12 +43,6 @@ public class GameController {
     @FXML
     private Label diff;
 
-    //immagini
-//    Image up = new Image(getClass().getResource("/levi/progettone/imgs/sprites/yellowbird-upflap.png").toExternalForm());
-//    Image down = new Image(getClass().getResource("/levi/progettone/imgs/sprites/yellowbird-downflap.png").toExternalForm());
-//    Image mid = new Image(getClass().getResource("/levi/progettone/imgs/sprites/yellowbird-midflap.png").toExternalForm());
-
-    //font
     Font font = Font.loadFont(getClass().getResourceAsStream("/levi/progettone/font/flappy-font.ttf"), 13);
 
     Sprite s = GameData.character;
@@ -96,12 +90,11 @@ public class GameController {
         potenzaSalto = GameData.potenzaSalto;
         obsSpeed = GameData.obsSpeed;
         d = GameData.diff;
-
-        System.out.println(gravita + " " + obsSpeed + " " + d);
     }
 
     @FXML
     public void goBack() throws IOException {
+        loop.stop();
         Main.setRoot("views/menu");
     }
 
@@ -179,16 +172,6 @@ public class GameController {
             initObsacles();
         }
 
-        // Cambio sfondo
-//        switch(punti){
-//            case 50, 150, 250, 350, 450, 550, 650, 750, 850, 950:
-//                setBG(false);
-//                break;
-//            case 100, 200, 300, 400, 500, 600, 700, 800, 900:
-//                setBG(true);
-//                break;
-//        }
-
         if(puntiAggiornati && punti % 50 == 0){
             setBG(dnCycle);
         }
@@ -214,8 +197,11 @@ public class GameController {
         // Collisione con il bordo inferiore
         double bottomBound = level.getHeight();
         if(bottomBound > 0 && player.getLayoutY() + player.getY() >= bottomBound){
-            reset();
-            return;
+            try {
+                gameOver();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
         }
 
         // Collisione con il bordo superiore
@@ -226,12 +212,22 @@ public class GameController {
 
         // Collisione con ostacolo
         if(collisionCheck()){
-            reset();
-            return;
+            try {
+                gameOver();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
         }
 
         // punti
         checkScore();
+    }
+
+    @FXML
+    private void gameOver() throws IOException {
+        reset();
+        loop.stop();
+        Main.setRoot("views/game-over");
     }
 
     private void ruota(int index){

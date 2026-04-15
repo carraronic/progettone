@@ -4,18 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="152df0e0-3b82-40b7-b3d7-22205a2f38a0" name="Changes" comment="sistemate opzioni">
+    <list default="true" id="152df0e0-3b82-40b7-b3d7-22205a2f38a0" name="Changes" comment="inseriti più sprite">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/levi/progettone/controller/GameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/levi/progettone/controller/GameController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/levi/progettone/controller/MenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/levi/progettone/controller/MenuController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/levi/progettone/controller/OptionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/levi/progettone/controller/OptionController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/levi/progettone/model/Gamedata.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/levi/progettone/model/Gamedata.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/levi/progettone/imgs/sprites/pipe-green-flip.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/levi/progettone/imgs/sprites/pipe/pipe-green-flip.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/levi/progettone/imgs/sprites/pipe-green.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/levi/progettone/imgs/sprites/pipe/pipe-green.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/levi/progettone/imgs/sprites/yellowbird-downflap.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/levi/progettone/imgs/sprites/bird/yellowbird-downflap.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/levi/progettone/imgs/sprites/yellowbird-midflap.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/levi/progettone/imgs/sprites/bird/yellowbird-midflap.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/levi/progettone/imgs/sprites/yellowbird-upflap.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/levi/progettone/imgs/sprites/bird/yellowbird-upflap.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/levi/progettone/views/game.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/levi/progettone/views/game.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/levi/progettone/model/Pipe.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/levi/progettone/model/Pipe.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/levi/progettone/views/options.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/levi/progettone/views/options.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -75,6 +68,7 @@
     &quot;Maven.Progettone [org.openjfx:javafx-maven-plugin:0.0.8:run].executor&quot;: &quot;Run&quot;,
     &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;master&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
@@ -135,7 +129,23 @@
       <option name="project" value="LOCAL" />
       <updated>1774864820902</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="inseriti più sprite">
+      <option name="closed" value="true" />
+      <created>1776074079780</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1776074079780</updated>
+    </task>
+    <task id="LOCAL-00005" summary="inseriti più sprite">
+      <option name="closed" value="true" />
+      <created>1776074445710</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1776074445710</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -153,7 +163,8 @@
     <MESSAGE value="messo font + grafica (manca il gameplay)" />
     <MESSAGE value="messo icona app :P" />
     <MESSAGE value="sistemare il menu delle opzioni" />
-    <option name="LAST_COMMIT_MESSAGE" value="sistemare il menu delle opzioni" />
+    <MESSAGE value="inseriti più sprite" />
+    <option name="LAST_COMMIT_MESSAGE" value="inseriti più sprite" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
