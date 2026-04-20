@@ -4,6 +4,7 @@ import javafx.animation.AnimationTimer;
 import javafx.animation.Interpolator;
 import javafx.animation.RotateTransition;
 import javafx.fxml.FXML;
+import javafx.geometry.Bounds;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
@@ -11,11 +12,14 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
 import javafx.util.Duration;
 import levi.progettone.Main;
 import levi.progettone.model.*;
 
+import java.awt.geom.Rectangle2D;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Random;
@@ -62,7 +66,7 @@ public class GameController {
     int time = 0;
     ArrayList<ImageView> obs = new ArrayList<>();
 
-
+    Rectangle sup = null;
 
     public void initialize(){
 
@@ -115,8 +119,10 @@ public class GameController {
     }
 
     public boolean collisionCheck(){
+        Bounds b = (s instanceof NyanCat)? sup.getBoundsInParent() : player.getBoundsInParent();
+
         for(ImageView o : obs){
-            if(player.getBoundsInParent().intersects(o.getBoundsInParent())){
+            if(b.intersects(o.getBoundsInParent())){
                 return true;
             }
         }
@@ -125,6 +131,11 @@ public class GameController {
 
     public void moveY(double v){
         player.setY(player.getY() + v);
+
+        if(s instanceof NyanCat && sup != null){
+            sup.setY(player.getY() + (player.getFitHeight() + 135));
+            sup.setX(player.getLayoutX() + player.getX() - s.getOffset().getX() - sup.getWidth()/2);
+        }
     }
 
     public void reset(){
@@ -191,8 +202,8 @@ public class GameController {
 
         if(s instanceof Bird || s instanceof Pipe){
             s.setSprite(velocitaY);
+            player.setImage(s.getCurrentSprite());
         }
-        player.setImage(s.getCurrentSprite());
 
         // Collisione con il bordo inferiore
         double bottomBound = level.getHeight();
@@ -231,6 +242,11 @@ public class GameController {
     }
 
     private void ruota(int index){
+
+        if(s instanceof Pipe || s instanceof NyanCat){
+            return;
+        }
+
         RotateTransition transition = new RotateTransition(Duration.seconds(0.5), player);
 
         switch(index){
@@ -272,6 +288,27 @@ public class GameController {
         diff.setStyle("-fx-font-family: '" + font.getFamily() + "'; -fx-font-size: 25; -fx-alignment: center; -fx-background-color: white;");
         punti = 0;
         diff.setText(diff.getText() + d);
+
+        player.setFitWidth(s.getWidth());
+        player.setFitHeight(s.getHeight());
+
+        System.out.println(player.getX());
+        System.out.println(player.getY());
+
+        if(s instanceof NyanCat){
+            player.setImage(s.getSpriteList().getFirst());
+            player.setX(s.getOffset().getX());
+            player.setY(s.getOffset().getY());
+
+            sup = new Rectangle(player.getX(), player.getY(), 70, 50);
+
+//            System.out.println(sup.getX() + " " + sup.getY());
+//            System.out.println(player.getX() + " " + sup.getY());
+
+            sup.setFill(Color.TRANSPARENT);
+
+            level.getChildren().add(sup);
+        }
     }
 
     public void aggiornaPunti(){

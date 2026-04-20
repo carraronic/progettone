@@ -9,6 +9,9 @@ public class Pipe extends Sprite{
     public Pipe() {
         this.spriteList = new ArrayList<>();
 
+        width = 60;
+        height = 60;
+
         Image up = new Image(getClass().getResource("/levi/progettone/imgs/sprites/pipe/pipe-sprite.png").toExternalForm());
         spriteList.add(up);
 

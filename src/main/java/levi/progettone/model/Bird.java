@@ -9,6 +9,9 @@ public class Bird extends Sprite{
     public Bird() {
         this.spriteList = new ArrayList<>();
 
+        width = 60;
+        height = 40;
+
         Image up = new Image(getClass().getResource("/levi/progettone/imgs/sprites/bird/yellowbird-upflap.png").toExternalForm());
         Image down = new Image(getClass().getResource("/levi/progettone/imgs/sprites/bird/yellowbird-downflap.png").toExternalForm());
         Image mid = new Image(getClass().getResource("/levi/progettone/imgs/sprites/bird/yellowbird-midflap.png").toExternalForm());

@@ -13,7 +13,7 @@
    </Label>
    <Pane fx:id="level" focusTraversable="true" prefHeight="700.0" prefWidth="432.0">
       <children>
-         <ImageView fx:id="player" fitHeight="60.0" fitWidth="60.0" layoutX="186.0" layoutY="244.0" pickOnBounds="true" preserveRatio="true">
+         <ImageView fx:id="player" fitHeight="40.0" fitWidth="60.0" layoutX="186.0" layoutY="244.0" pickOnBounds="true" preserveRatio="true">
             <image>
                <Image url="@../imgs/sprites/bird/yellowbird-midflap.png" />
             </image>
