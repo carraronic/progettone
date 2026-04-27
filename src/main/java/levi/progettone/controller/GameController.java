@@ -9,6 +9,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
@@ -59,7 +61,6 @@ public class GameController {
     double potenzaSalto;
     double obsSpeed;
     Difficolta d;
-    boolean dnCycle;
     boolean puntiAggiornati = false;
 
     Random rand = new Random();
@@ -105,6 +106,13 @@ public class GameController {
     @FXML
     public void input(MouseEvent event){
         if(event.getButton().equals(MouseButton.PRIMARY)){
+            jump();
+        }
+    }
+
+    @FXML
+    public void tastiera(KeyEvent event){
+        if(event.getCode().equals(KeyCode.SPACE)){
             jump();
         }
     }
@@ -181,10 +189,6 @@ public class GameController {
         // Genera nuovi ostacoli ogni 200 frame
         if(time % 400 == 0){
             initObsacles();
-        }
-
-        if(puntiAggiornati && punti % 50 == 0){
-            setBG(dnCycle);
         }
 
         // Animazione sprite in base alla velocità verticale
@@ -283,7 +287,7 @@ public class GameController {
     public void init(){
         stats();
         //inizializza il background, il font e i punti
-        setBG(true);
+        setBG();
         back.setStyle("-fx-font-family: '" + font.getFamily() + "'; -fx-font-size: 20;");
         diff.setStyle("-fx-font-family: '" + font.getFamily() + "'; -fx-font-size: 25; -fx-alignment: center; -fx-background-color: white;");
         punti = 0;
@@ -328,13 +332,8 @@ public class GameController {
         }
     }
 
-    public void setBG(boolean dn){
-        Image image;
-        if(dn){
-            image = new Image(getClass().getResource("/levi/progettone/imgs/others/background-day.png").toExternalForm());
-        }else{
-            image = new Image(getClass().getResource("/levi/progettone/imgs/others/background-night.png").toExternalForm());
-        }
+    public void setBG(){
+        Image image = s.getSfondo();
         BackgroundSize size = new BackgroundSize(100, 100, true, true, true, false);
         BackgroundImage bImage = new BackgroundImage(image, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, size);
         gameScreen.setBackground(new Background(bImage));
@@ -343,8 +342,6 @@ public class GameController {
         size = new BackgroundSize(100, 100, true, true, true, false);
         bImage = new BackgroundImage(image, BackgroundRepeat.REPEAT, BackgroundRepeat.REPEAT, BackgroundPosition.CENTER, size);
         piattaforma.setBackground(new Background(bImage));
-
-        dnCycle = !dnCycle;
     }
 
     private void initObsacles(){
