@@ -12,8 +12,6 @@ public class Bird extends Sprite{
         width = 60;
         height = 40;
 
-        sfondo = new Image(getClass().getResource("/levi/progettone/imgs/others/background-day.png").toExternalForm());
-
         Image up = new Image(getClass().getResource("/levi/progettone/imgs/sprites/bird/yellowbird-upflap.png").toExternalForm());
         Image down = new Image(getClass().getResource("/levi/progettone/imgs/sprites/bird/yellowbird-downflap.png").toExternalForm());
         Image mid = new Image(getClass().getResource("/levi/progettone/imgs/sprites/bird/yellowbird-midflap.png").toExternalForm());

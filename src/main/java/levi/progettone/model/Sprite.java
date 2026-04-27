@@ -12,12 +12,6 @@ public abstract class Sprite {
     double height;
     Point2D offset = new Point2D.Double();
 
-    Image sfondo;
-
-    public Image getSfondo() {
-        return sfondo;
-    }
-
     public double getWidth() {
         return width;
     }

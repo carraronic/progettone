@@ -1,7 +1,5 @@
 package levi.progettone.model;
 
-import javafx.scene.image.Image;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,11 +17,9 @@ public class GameData {
     private static final Pipe p = new Pipe();
     public static ArrayList<Sprite> characters = new ArrayList<>(List.of(b, c, p));
     public static Sprite character = b;
-    public static Image background;
 
     public static void setCharacter(Sprite character) {
         GameData.character = character;
-        background = character.getSfondo();
     }
 
     public static void set(Difficolta d){

@@ -191,6 +191,10 @@ public class GameController {
             initObsacles();
         }
 
+        if(punti % 5 == 0){
+            setBG(punti % 2 == 0);
+        }
+
         // Animazione sprite in base alla velocità verticale
         if(velocitaY < -1){
             ruota(1);
@@ -287,7 +291,7 @@ public class GameController {
     public void init(){
         stats();
         //inizializza il background, il font e i punti
-        setBG();
+        setBG(true);
         back.setStyle("-fx-font-family: '" + font.getFamily() + "'; -fx-font-size: 20;");
         diff.setStyle("-fx-font-family: '" + font.getFamily() + "'; -fx-font-size: 25; -fx-alignment: center; -fx-background-color: white;");
         punti = 0;
@@ -305,9 +309,6 @@ public class GameController {
             player.setY(s.getOffset().getY());
 
             sup = new Rectangle(player.getX(), player.getY(), 70, 50);
-
-//            System.out.println(sup.getX() + " " + sup.getY());
-//            System.out.println(player.getX() + " " + sup.getY());
 
             sup.setFill(Color.TRANSPARENT);
 
@@ -332,8 +333,14 @@ public class GameController {
         }
     }
 
-    public void setBG(){
-        Image image = s.getSfondo();
+    public void setBG(boolean b){
+        Image image;
+        if(b){
+            image = new Image(getClass().getResource("/levi/progettone/imgs/others/background-day.png").toExternalForm());
+        }else{
+            image = new Image(getClass().getResource("/levi/progettone/imgs/others/background-night.png").toExternalForm());
+        }
+
         BackgroundSize size = new BackgroundSize(100, 100, true, true, true, false);
         BackgroundImage bImage = new BackgroundImage(image, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, size);
         gameScreen.setBackground(new Background(bImage));

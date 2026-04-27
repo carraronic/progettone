@@ -8,8 +8,6 @@ public class NyanCat extends Sprite{
     public NyanCat() {
         this.spriteList = new ArrayList<>();
 
-        sfondo = new Image(getClass().getResource("/levi/progettone/imgs/others/space-bg.png").toExternalForm());
-
         width = 250;
         height = 140;
 

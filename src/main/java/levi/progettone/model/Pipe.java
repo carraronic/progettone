@@ -15,8 +15,6 @@ public class Pipe extends Sprite{
         Image up = new Image(getClass().getResource("/levi/progettone/imgs/sprites/pipe/pipe-sprite.png").toExternalForm());
         spriteList.add(up);
 
-        sfondo = new Image(getClass().getResource("/levi/progettone/imgs/others/night-bg.png").toExternalForm());
-
         this.currentSprite = up;
     }
 
