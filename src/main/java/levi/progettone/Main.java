@@ -17,6 +17,7 @@ public class Main extends Application {
         scene = new Scene(loadFXML("views/menu"), 432, 768);
         stage.getIcons().add(new Image(Main.class.getResource("imgs/icon.png").toExternalForm()));
         stage.setScene(scene);
+        stage.setResizable(false);
         stage.show();
     }
 
