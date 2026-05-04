@@ -16,6 +16,8 @@ public class Pipe extends Sprite{
         spriteList.add(up);
 
         this.currentSprite = up;
+
+        id = "pipe";
     }
 
     @Override

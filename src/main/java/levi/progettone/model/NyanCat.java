@@ -25,6 +25,8 @@ public class NyanCat extends Sprite{
         spriteList.add(sprite);
 
         currentSprite = sprite;
+
+        id = "cat";
     }
 
     @Override

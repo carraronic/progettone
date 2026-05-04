@@ -26,6 +26,11 @@
         <Button fx:id="start" onAction="#goStart" prefHeight="50.0" prefWidth="200.0" text="START" textAlignment="CENTER" />
          <Button fx:id="options" onAction="#opt" prefHeight="50.0" prefWidth="200.0" text="OPTIONS" textAlignment="CENTER" />
          <Button fx:id="exit" mnemonicParsing="false" onAction="#esci" prefHeight="50.0" prefWidth="200.0" text="QUIT" />
+         <Button fx:id="lead" layoutX="48.0" layoutY="148.0" mnemonicParsing="false" onAction="#toLeads" prefHeight="25.0" prefWidth="150.0" text="Leaderboards" textAlignment="CENTER">
+            <font>
+               <Font size="14.0" />
+            </font>
+         </Button>
       </children>
    </VBox>
    <Label>

@@ -17,6 +17,8 @@ import java.io.IOException;
 public class MenuController {
 
     @FXML
+    public Button lead;
+    @FXML
     private Button start;
     @FXML
     private Button exit;
@@ -63,10 +65,15 @@ public class MenuController {
         exit.setStyle("-fx-font-family: '" + font.getFamily() + "'; -fx-font-size: 25;");
         options.setStyle("-fx-font-family: '" + font.getFamily() + "'; -fx-font-size: 25;");
         start.setStyle("-fx-font-family: '" + font.getFamily() + "'; -fx-font-size: 25;");
+        lead.setStyle("-fx-font-family: '" + font.getFamily() + "'; -fx-font-size: 16;");
     }
 
     @FXML
     public void opt() throws IOException {
         Main.setRoot("views/options");
+    }
+
+    public void toLeads() throws IOException {
+        Main.setRoot("views/leaderboards");
     }
 }

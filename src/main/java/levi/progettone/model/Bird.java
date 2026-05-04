@@ -21,6 +21,8 @@ public class Bird extends Sprite{
         spriteList.add(mid);
 
         this.currentSprite = spriteList.getLast();
+
+        id = "bird";
     }
 
     @Override

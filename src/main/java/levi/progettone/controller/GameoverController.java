@@ -4,6 +4,7 @@ package levi.progettone.controller;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
@@ -14,6 +15,10 @@ import java.io.IOException;
 
 public class GameoverController {
 
+    //TODO salvataggio punti e nome
+
+    @FXML
+    public Label pt;
     @FXML
     private ImageView image;
     @FXML
