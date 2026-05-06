@@ -4,15 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="152df0e0-3b82-40b7-b3d7-22205a2f38a0" name="Changes" comment="finito">
+    <list default="true" id="152df0e0-3b82-40b7-b3d7-22205a2f38a0" name="Changes" comment="aggiunta classifica">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/record.txt" beforeDir="false" afterPath="$PROJECT_DIR$/record.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/levi/progettone/controller/GameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/levi/progettone/controller/GameController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/levi/progettone/controller/GameoverController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/levi/progettone/controller/GameoverController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/levi/progettone/controller/MenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/levi/progettone/controller/MenuController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/levi/progettone/model/Bird.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/levi/progettone/model/Bird.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/levi/progettone/model/NyanCat.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/levi/progettone/model/NyanCat.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/levi/progettone/model/Pipe.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/levi/progettone/model/Pipe.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/levi/progettone/model/Sprite.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/levi/progettone/model/Sprite.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/levi/progettone/views/menu.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/levi/progettone/views/menu.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/levi/progettone/controller/RecordController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/levi/progettone/controller/RecordController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/levi/progettone/model/GameData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/levi/progettone/model/GameData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/levi/progettone/model/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/levi/progettone/model/Player.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/levi/progettone/views/game-over.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/levi/progettone/views/game-over.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -181,7 +181,15 @@
       <option name="project" value="LOCAL" />
       <updated>1777446775605</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="aggiunta classifica">
+      <option name="closed" value="true" />
+      <created>1777888765675</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1777888765675</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -203,7 +211,8 @@
     <MESSAGE value="messa schermata di gameover" />
     <MESSAGE value="sistemato sprite NyanCat" />
     <MESSAGE value="finito" />
-    <option name="LAST_COMMIT_MESSAGE" value="finito" />
+    <MESSAGE value="aggiunta classifica" />
+    <option name="LAST_COMMIT_MESSAGE" value="aggiunta classifica" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

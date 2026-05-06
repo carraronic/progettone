@@ -21,7 +21,6 @@ import javafx.util.Duration;
 import levi.progettone.Main;
 import levi.progettone.model.*;
 
-import java.awt.geom.Rectangle2D;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Random;
@@ -244,6 +243,7 @@ public class GameController {
 
     @FXML
     private void gameOver() throws IOException {
+        GameData.player.setPunteggio(punti);
         reset();
         loop.stop();
         Main.setRoot("views/game-over");

@@ -1,10 +1,8 @@
 package levi.progettone.controller;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
@@ -13,14 +11,11 @@ import levi.progettone.Main;
 import levi.progettone.model.Player;
 import levi.progettone.model.Sprite;
 
-import javax.swing.plaf.LabelUI;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Collections;
 
 public class RecordController {
-
-    //TODO salvare sul file
 
     @FXML
     public VBox lista;
@@ -31,8 +26,8 @@ public class RecordController {
     @FXML
     public VBox screen;
 
-    ArrayList<Player> players = new ArrayList<>();
-    String path = "record.txt";
+    static ArrayList<Player> players = new ArrayList<>();
+    static String path = "record.txt";
     Font font = Font.loadFont(getClass().getResourceAsStream("/levi/progettone/font/flappy-font.ttf"), 13);
 
     public void initialize(){
@@ -54,6 +49,8 @@ public class RecordController {
     }
 
     private void readPlayers() throws IOException {
+
+        players.clear();
         BufferedReader bf = new BufferedReader(new FileReader(path));
         String r = null;
         String[] p;
@@ -78,14 +75,11 @@ public class RecordController {
         bf.close();
     }
 
-    private void savePlayers() throws IOException{
+    public static void savePlayers(Player p) throws IOException{
         PrintWriter pw = new PrintWriter(new FileWriter(path, true));
-        String s;
 
-        for(Player p : players){
-            s = p.getSprite().getId() + ";" + p.getNome() + ";" + p.getPunteggio();
-            pw.println(s);
-        }
+        String s = p.getSprite().getId() + ";" + p.getNome() + ";" + p.getPunteggio();
+        pw.println(s);
 
         pw.close();
     }

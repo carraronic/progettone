@@ -18,8 +18,12 @@ public class GameData {
     public static ArrayList<Sprite> characters = new ArrayList<>(List.of(b, c, p));
     public static Sprite character = b;
 
+    //PLAYER
+    public static Player player = new Player(b, "", 0);
+
     public static void setCharacter(Sprite character) {
         GameData.character = character;
+        player = new Player(character, "", 0);
     }
 
     public static void set(Difficolta d){

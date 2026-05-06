@@ -1,24 +1,26 @@
 package levi.progettone.controller;
 
-
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.scene.text.Font;
 import levi.progettone.Main;
+import levi.progettone.model.GameData;
 
 import java.io.IOException;
 
 public class GameoverController {
 
-    //TODO salvataggio punti e nome
-
     @FXML
-    public Label pt;
+    public Label displayPunti;
+    @FXML
+    public TextField name;
+    @FXML
+    public Button save;
     @FXML
     private ImageView image;
     @FXML
@@ -36,11 +38,18 @@ public class GameoverController {
 
         btn1.setStyle("-fx-font-family: '" + font.getFamily() + "'; -fx-font-size: 25;");
         btn2.setStyle("-fx-font-family: '" + font.getFamily() + "'; -fx-font-size: 25;");
+        save.setStyle("-fx-font-family: '" + font.getFamily() + "'; -fx-font-size: 20;");
+        name.setStyle("-fx-font-family: '" + font.getFamily() + "'; -fx-font-size: 20;");
+        displayPunti.setStyle("-fx-font-family: '" + font.getFamily() + "'; -fx-font-size: 25; -fx-text-fill: white;");
+
+        displayPunti.setText("IL TUO PUNTEGGIO: " + GameData.player.getPunteggio());
 
         Image image = new Image(getClass().getResource("/levi/progettone/imgs/others/background-night.png").toExternalForm());
         BackgroundSize size = new BackgroundSize(100, 100, true, true, true, false);
         BackgroundImage bImage = new BackgroundImage(image, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, size);
         screen.setBackground(new Background(bImage));
+
+
     }
 
 
@@ -51,5 +60,11 @@ public class GameoverController {
 
     public void mainMenu() throws IOException {
         Main.setRoot("views/menu");
+    }
+
+    public void salva() throws IOException {
+        GameData.player.setNome(name.getText());
+        RecordController.savePlayers(GameData.player);
+        Main.setRoot("views/leaderboards");
     }
 }

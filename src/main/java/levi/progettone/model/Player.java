@@ -13,6 +13,14 @@ public class Player implements Comparable<Player>{
         this.punteggio = punteggio;
     }
 
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public void setPunteggio(int punteggio) {
+        this.punteggio = punteggio;
+    }
+
     public String getNome() {
         return nome;
     }
