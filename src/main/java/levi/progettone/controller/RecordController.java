@@ -8,6 +8,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.scene.text.Font;
 import levi.progettone.Main;
+import levi.progettone.model.Difficolta;
 import levi.progettone.model.Player;
 import levi.progettone.model.Sprite;
 
@@ -63,8 +64,9 @@ public class RecordController {
                 Sprite s = Sprite.getInstance(p[0]);
                 String nome = p[1];
                 int punti = Integer.parseInt(p[2]);
+                Difficolta diff = Difficolta.getDiff(p[3]);
 
-                Player pl = new Player(s, nome, punti);
+                Player pl = new Player(s, nome, punti, diff);
                 System.out.println(pl);
 
                 players.add(pl);
@@ -78,7 +80,7 @@ public class RecordController {
     public static void savePlayers(Player p) throws IOException{
         PrintWriter pw = new PrintWriter(new FileWriter(path, true));
 
-        String s = p.getSprite().getId() + ";" + p.getNome() + ";" + p.getPunteggio();
+        String s = p.getSprite().getId() + ";" + p.getNome() + ";" + p.getPunteggio() + ";" + p.getDiff();
         pw.println(s);
 
         pw.close();
@@ -94,7 +96,7 @@ public class RecordController {
 
             HBox h = new HBox();
             Label spazio = new Label("   ");
-            Label nome = new Label(p.getNome());
+            Label nome = new Label(p.getNome() + " (" + p.getDiff() + ")");
             Label punti = new Label(String.valueOf(p.getPunteggio()));
             Region r = new Region();
 

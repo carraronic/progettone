@@ -6,7 +6,13 @@
   <component name="ChangeListManager">
     <list default="true" id="152df0e0-3b82-40b7-b3d7-22205a2f38a0" name="Changes" comment="aggiunta classifica">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/record.txt" beforeDir="false" afterPath="$PROJECT_DIR$/record.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/levi/progettone/controller/GameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/levi/progettone/controller/GameController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/levi/progettone/controller/GameoverController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/levi/progettone/controller/GameoverController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/levi/progettone/controller/RecordController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/levi/progettone/controller/RecordController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/levi/progettone/model/Difficolta.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/levi/progettone/model/Difficolta.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/levi/progettone/model/GameData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/levi/progettone/model/GameData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/levi/progettone/model/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/levi/progettone/model/Player.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/levi/progettone/views/game-over.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/levi/progettone/views/game-over.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,12 +43,12 @@
     &quot;assignee&quot;: &quot;carraronic&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/carraronic/progettone.git",
-    "accountId": "be1f6f32-dfa4-4bc2-b1e3-6cc03f713b7d"
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/carraronic/progettone-flappy-bird.git&quot;,
+    &quot;accountId&quot;: &quot;2fddc1b0-051d-4991-91fc-3b556b1b843a&quot;
   }
-}]]></component>
+}</component>
   <component name="MavenImportPreferences">
     <option name="generalSettings">
       <MavenGeneralSettings>

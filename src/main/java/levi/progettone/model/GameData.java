@@ -19,11 +19,11 @@ public class GameData {
     public static Sprite character = b;
 
     //PLAYER
-    public static Player player = new Player(b, "", 0);
+    public static Player player = new Player(b, "", 0, diff);
 
     public static void setCharacter(Sprite character) {
         GameData.character = character;
-        player = new Player(character, "", 0);
+        player = new Player(character, "", 0, diff);
     }
 
     public static void set(Difficolta d){
@@ -35,6 +35,8 @@ public class GameData {
         if (d.equals(Difficolta.REVERSE)){
             gravita *= -1;
         }
+
+        player.setDiff(d);
     }
 
     public static void set(double grav, double obs){

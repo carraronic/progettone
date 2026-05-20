@@ -164,10 +164,13 @@ public class GameController {
                 top = false;
                 if (pipe.getUserData() == null && pipe.getX() + pipe.getFitWidth() < player.getLayoutX()) {
                     punti++;
-                    System.out.println(punti);
                     pipe.setUserData("passed");
                     aggiornaPunti();
                     puntiAggiornati = true;
+
+                    if(punti > 0 && punti % 2 == 0){
+                        obsSpeed *= 1.25;
+                    }
                     break;
                 }else{
                     puntiAggiornati = false;

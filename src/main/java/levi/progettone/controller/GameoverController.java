@@ -9,6 +9,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.scene.text.Font;
 import levi.progettone.Main;
+import levi.progettone.model.Difficolta;
 import levi.progettone.model.GameData;
 
 import java.io.IOException;
@@ -29,6 +30,8 @@ public class GameoverController {
     private Button btn2;
     @FXML
     private VBox screen;
+    @FXML
+    private Label warning;
 
     Font font = Font.loadFont(getClass().getResourceAsStream("/levi/progettone/font/flappy-font.ttf"), 13);
 
@@ -40,6 +43,7 @@ public class GameoverController {
         btn2.setStyle("-fx-font-family: '" + font.getFamily() + "'; -fx-font-size: 25;");
         save.setStyle("-fx-font-family: '" + font.getFamily() + "'; -fx-font-size: 20;");
         name.setStyle("-fx-font-family: '" + font.getFamily() + "'; -fx-font-size: 20;");
+        warning.setStyle("-fx-font-family: '" + font.getFamily() + "'; -fx-font-size: 15; -fx-text-fill: white;");
         displayPunti.setStyle("-fx-font-family: '" + font.getFamily() + "'; -fx-font-size: 25; -fx-text-fill: white;");
 
         displayPunti.setText("IL TUO PUNTEGGIO: " + GameData.player.getPunteggio());
@@ -49,7 +53,10 @@ public class GameoverController {
         BackgroundImage bImage = new BackgroundImage(image, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, size);
         screen.setBackground(new Background(bImage));
 
-
+        if(GameData.diff.equals(Difficolta.CUSTOM)){
+            save.setDisable(true);
+            warning.setText("La difficoltà CUSTOM non si può salvare in classifica");
+        }
     }
 
 
@@ -63,8 +70,12 @@ public class GameoverController {
     }
 
     public void salva() throws IOException {
-        GameData.player.setNome(name.getText());
-        RecordController.savePlayers(GameData.player);
-        Main.setRoot("views/leaderboards");
+        if(!name.getText().isEmpty()){
+            GameData.player.setNome(name.getText());
+            RecordController.savePlayers(GameData.player);
+            Main.setRoot("views/leaderboards");
+        }else{
+            warning.setText("Inserire un nome valido");
+        }
     }
 }

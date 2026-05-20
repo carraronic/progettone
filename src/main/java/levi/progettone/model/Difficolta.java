@@ -10,4 +10,14 @@ public enum Difficolta {
 
     public final double obs;
     public final double grav;
+
+    public static Difficolta getDiff(String s){
+        return switch (s) {
+            case "EASY" -> Difficolta.EASY;
+            case "NORMAL" -> Difficolta.NORMAL;
+            case "HARD" -> Difficolta.HARD;
+            case "REVERSE" -> Difficolta.REVERSE;
+            default -> null;
+        };
+    }
 }

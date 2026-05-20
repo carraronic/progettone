@@ -6,11 +6,13 @@ public class Player implements Comparable<Player>{
     Sprite sprite;
     String nome;
     int punteggio;
+    Difficolta diff;
 
-    public Player(Sprite sprite, String nome, int punteggio) {
+    public Player(Sprite sprite, String nome, int punteggio, Difficolta diff) {
         this.sprite = sprite;
         this.nome = nome;
         this.punteggio = punteggio;
+        this.diff = diff;
     }
 
     public void setNome(String nome) {
@@ -25,12 +27,20 @@ public class Player implements Comparable<Player>{
         return nome;
     }
 
+    public void setDiff(Difficolta diff) {
+        this.diff = diff;
+    }
+
     public int getPunteggio() {
         return punteggio;
     }
 
     public Sprite getSprite() {
         return sprite;
+    }
+
+    public Difficolta getDiff() {
+        return diff;
     }
 
     public Image getSelectedSprite(){
